@@ -2,6 +2,7 @@ currently in development
 
 uses Pimoroni Keybow to control SmartSDR via CAT interface
 https://shop.pimoroni.com/products/keybow-mini-3-key-macro-pad-kit?variant=27890390696019
+https://roskosch.de/smartsdr-for-mac/
 
 
 Left key shifts current frequency down with a configurable frequency shift
