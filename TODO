@@ -1,0 +1,15 @@
+interface + backend
+
+Interface
+Backend must safe al data in redis (simple set vars)
+It has to run on a Raspberry PI zero ...
+Pythone + Flask ?
+
+SmartSDR workstation
+Fill in IP (check if it is a valid ip cannot be empty)
+Fill in TCP port (check if the port is between 1024 and 65535)
+
+Keybow setup
+PTT release delay (slider from 100ms till 500ms in 4 steps with 500ms as default) 
+-> results in redis integer (integer between 1 and 5)
+

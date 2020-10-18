@@ -1,0 +1,9 @@
+currently in development
+
+uses Pimoroni Keybow to control SmartSDR via CAT interface
+https://shop.pimoroni.com/products/keybow-mini-3-key-macro-pad-kit?variant=27890390696019
+
+
+Left key shifts current frequency down with a configurable frequency shift
+Middle key is PTT toggle ... release has a configurable delay between 100ms en 500ms
+Right key shifts current frequency up with a configurable frequency shift
