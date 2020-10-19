@@ -17,6 +17,6 @@ Offset ... slider in increments (1, 5, 10, 15, 20, 25, 50, 100, 150, 200, 250, 5
 
 Redis Vars
 offset  (1-1000) (sets tuning increments)
-ip  (ipv4 ip address)
-port (port between 1024 and  65535)
-delay (integer  1,2,3,4,5)
+smartSDRip  (ipv4 ip address)
+smartSDRport (port between 1024 and  65535)
+pttDelay (integer  1,2,3,4,5)
