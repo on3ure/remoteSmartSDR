@@ -10,6 +10,12 @@ Fill in IP (check if it is a valid ip cannot be empty)
 Fill in TCP port (check if the port is between 1024 and 65535)
 
 Keybow setup
-PTT release delay (slider from 100ms till 500ms in 4 steps with 500ms as default) 
+PTT release delay (slider from 100ms till 500ms  (100,200,300,400,500) with 500ms as default) 
 -> results in redis integer (integer between 1 and 5)
 
+
+Redis Vars
+offset  (1-1000) (sets tuning increments)
+ip  (ipv4 ip address)
+port (port between 1024 and  65535)
+delay (integer  1,2,3,4,5)
