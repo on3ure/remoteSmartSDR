@@ -3,7 +3,7 @@ interface + backend
 Interface
 Backend must safe al data in redis (simple set vars)
 It has to run on a Raspberry PI zero ...
-Pythone + Flask ?
+Python + Flask ?
 
 SmartSDR workstation
 Fill in IP (check if it is a valid ip cannot be empty)
@@ -13,6 +13,7 @@ Keybow setup
 PTT release delay (slider from 100ms till 500ms  (100,200,300,400,500) with 500ms as default) 
 -> results in redis integer (integer between 1 and 5)
 
+Offset ... slider in increments (1, 5, 10, 15, 20, 25, 50, 100, 150, 200, 250, 500, 1000)
 
 Redis Vars
 offset  (1-1000) (sets tuning increments)
