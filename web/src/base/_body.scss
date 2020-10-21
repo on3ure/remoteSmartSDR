@@ -1,0 +1,15 @@
+html,
+body {
+  min-height: 100%;
+}
+
+html {
+  font-size: (100% / 1.6); // 1rem = 10px
+}
+
+body {
+  font-size: 1.8rem;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
