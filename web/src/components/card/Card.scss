@@ -1,0 +1,13 @@
+.card {
+  padding: 3.5rem 3rem;
+
+  background-color: $c-white;
+
+  border-radius: 1rem;
+
+  box-shadow: 0 .2rem .4rem rgba($c-black, .1);
+
+  @media (min-width: $md) {
+  
+  }
+}
