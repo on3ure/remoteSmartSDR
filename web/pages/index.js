@@ -19,19 +19,29 @@ export default function Home() {
           </h1>
 
           <div className="grid grid--gap-sm">
-            <div className="column-xs-6 column-lg-4 column-xl-3">
+            <div className="column-xs-6">
+              <Card>
+                <p>IP address</p>
+              </Card>
+            </div>
+            <div className="column-xs-6">
+              <Card>
+                <p>TCP port</p>
+              </Card>
+            </div>
+            <div className="column-xs-6">
               <Card>
                 <Slider
-                  label="SmartSDRip"
+                  label="PTT release delay"
                   description="Test"
                   name="slider1"
                 />
               </Card>
             </div>
-            <div className="column-xs-6 column-lg-4 column-xl-3">
+            <div className="column-xs-6">
               <Card>
                 <Slider
-                  label="SmartSDRport"
+                  label="Offset"
                   description="Test"
                   name="slider2"
                 />
