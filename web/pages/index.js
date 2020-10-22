@@ -21,12 +21,18 @@ export default function Home() {
           <div className="grid grid--gap-sm">
             <div className="column-xs-6">
               <Card>
-                <p>IP address</p>
+                <div>
+                  <label htmlFor="ip">IP address</label>
+                  <input type="text" id="ip" name="ip" maxLength="15" />
+                </div>
               </Card>
             </div>
             <div className="column-xs-6">
               <Card>
-                <p>TCP port</p>
+                <div>
+                  <label htmlFor="port">TCP port</label>
+                  <input type="text" id="port" name="port" maxLength="5" />
+                </div>
               </Card>
             </div>
             <div className="column-xs-6">

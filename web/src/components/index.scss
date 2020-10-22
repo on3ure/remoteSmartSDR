@@ -1,2 +1,20 @@
 @import "./card/Card";
 @import "./slider/Slider";
+
+label {
+  display: block;
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+  color: #424456;
+  font-size: 3.2rem;
+}
+
+input[type="text"] {
+  border: .2rem solid #3C59E9;
+  border-radius: 1rem;
+  width: 100%;
+  padding: .5rem 1rem;
+  outline: none;
+  color: #9DA2B8;
+  font-size: 1.6rem;
+}
