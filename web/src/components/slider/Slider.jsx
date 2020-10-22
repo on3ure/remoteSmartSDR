@@ -23,7 +23,7 @@ const Slider = ({
       <div className="slider__description">
         { description }
       </div>
-      <input type="range" min="0" max="500" value={ number } onChange={ onRangeChange } name={ name } id={ name } className="input-slider" />
+      <input type="range" min="0" max="500" value={ number } onChange={ onRangeChange } name={ name } id={ name } className="slider__range" />
     </div>
   );
 };

@@ -23,31 +23,31 @@
     font-size: 1.4rem;
     color: #9DA2B8;
   }
-}
 
-.input-slider {
-  width: 100%;
-  height: .1rem;
-  background-color: #D8DBE8;
-  outline: none;
-  transition: opacity .2s;
-}
+  &__range {
+    width: 100%;
+    height: .1rem;
+    background-color: #D8DBE8;
+    outline: none;
+    transition: opacity .2s;
+    
+    &::-webkit-slider-thumb {
+      appearance: none;
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 50%; 
+      background-color: $c-white;
+      border: .2rem solid #3C59E9;
+      cursor: pointer;
+    }
 
-.input-slider::-webkit-slider-thumb {
-  appearance: none;
-  width: 2.4rem;
-  height: 2.4rem;
-  border-radius: 50%; 
-  background-color: $c-white;
-  border: .2rem solid #3C59E9;
-  cursor: pointer;
-}
-
-.input-slider::-moz-range-thumb {
-  width: 2.4rem;
-  height: 2.4rem;
-  border-radius: 50%;
-  background-color: $c-white;
-  border: .2rem solid #3C59E9;
-  cursor: pointer;
+    &::-moz-range-thumb {
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 50%;
+      background-color: $c-white;
+      border: .2rem solid #3C59E9;
+      cursor: pointer;
+    }
+  }
 }
