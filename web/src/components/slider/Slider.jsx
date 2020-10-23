@@ -7,7 +7,6 @@ const Slider = ({
   max,
   steps,
 }) => {
-
   const [inputNumber, setInputNumber] = useState(0);
   const [outputNumber, setOutputNumber] = useState(0);
 
@@ -15,9 +14,11 @@ const Slider = ({
     setOutputNumber(steps[0]);
   }, []);
 
-  const onRangeChange = (e) => {
-    setInputNumber(e.target.value)
-    setOutputNumber(steps[e.target.value]);
+  const onRangeChange = (event) => {
+    const { value: newRange } = event.target;
+
+    setInputNumber(newRange)
+    setOutputNumber(steps[newRange]);
   }
 
   return (
