@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik } from 'formik';
 
 import Card from 'components/card/Card';
@@ -8,14 +8,28 @@ import SmartSDRFormService from './services/SmartSDRFormService';
 import InputField from './fields/InputField';
 
 const Form = () => {
+
+  const [initialValues, setInitialValues] = useState({});
+
+  useEffect(() => {
+    const fetchInitialData = async () => {
+      const data = await SmartSDRFormService.getSettings()
+      if (data) {
+        console.log(data);
+        setInitialValues(data);
+      }
+    }
+
+    fetchInitialData();
+  }, []);
+
+  if (!Object.keys(initialValues).length) {
+    return false;
+  }
+
   return (
     <Formik
-      initialValues={{
-        smartSDRip: '',
-        smartSDRport: '',
-        pttDelay: 500,
-        offset: 250,
-      }}
+      initialValues={initialValues}
       validate={values => {
         const errors = {};
 

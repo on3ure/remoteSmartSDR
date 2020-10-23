@@ -1,5 +1,5 @@
 class SmartSDRFormService {
-  static getSettings = async (data) => {
+  static getSettings = async () => {
 
     const response = await fetch('/api/hello', {
       method: 'GET',
