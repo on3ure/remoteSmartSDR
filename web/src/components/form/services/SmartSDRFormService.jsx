@@ -1,7 +1,7 @@
 class SmartSDRFormService {
   static getSettings = async (data) => {
 
-    const response = await fetch('/api/get/', {
+    const response = await fetch('/api/hello', {
       method: 'GET',
       credentials: 'same-origin',
       headers: {
@@ -17,7 +17,7 @@ class SmartSDRFormService {
   };
 
   static postData = async (data) => {
-    const response = await fetch('/api/post/', {
+    const response = await fetch('/api/hello', {
       method: 'PUT',
       credentials: 'same-origin',
       body: JSON.stringify(data),
