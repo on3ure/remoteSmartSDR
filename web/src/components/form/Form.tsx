@@ -22,9 +22,9 @@ const Form = () => {
         let errors:FormValidateValues = {};
 
         if (values.smartSDRip === '') {
-          errors.smartSDRip = 'Required';
+          errors.smartSDRip = 'This field is required';
         } else if (values.smartSDRport === '') {
-          errors.smartSDRport = 'Required';
+          errors.smartSDRport = 'This field is required';
         }
 
         return errors;
@@ -33,7 +33,7 @@ const Form = () => {
         const postData = async (values) => {
           const response = await SmartSDRFormService.postData(values);
 
-          if (response) {
+          if (response && response === true) {
             setSubmitting(false);
           }
         };
@@ -41,11 +41,7 @@ const Form = () => {
         postData(values);
       }}
      >
-       {({
-         errors,
-         handleSubmit,
-         isSubmitting,
-       }) => (
+       {({ handleSubmit, isSubmitting }) => (
         <div className="form">
           <div className="form__grid">
             <Card title="IP address">

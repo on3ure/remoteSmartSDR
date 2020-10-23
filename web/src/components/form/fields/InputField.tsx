@@ -15,10 +15,24 @@ const InputField: FC<InputFieldProps> = ({
     <Field
       id={id}
       name={name}
-      placeholder={placeholder}
-      maxLength={maxLength}
-      className="input-field__input"
-    />
+    >
+      {({
+        field,
+        meta: { touched, error },
+      }) => (
+        <div>
+          <input
+            {...field}
+            placeholder={placeholder}
+            maxLength={maxLength}
+            className="input-field__input"
+          />
+          {touched && error && (
+            <div className="input-field__error">{error}</div>
+          )}
+        </div>
+      )}
+    </Field>
   </div>
 );
 

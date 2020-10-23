@@ -1,5 +1,5 @@
 class SmartSDRFormService {
-  static getSettings = async (data) => {
+  static getSettings = async (data): Promise<boolean> => {
 
     const response = await fetch('/api/hello', {
       method: 'GET',
@@ -10,13 +10,13 @@ class SmartSDRFormService {
     });
 
     if (response) {
-      return response.json();
+      return true;
     }
 
     return false;
   };
 
-  static postData = async (data) => {
+  static postData = async (data): Promise<boolean> => {
     const response = await fetch('/api/hello', {
       method: 'PUT',
       credentials: 'same-origin',
@@ -27,7 +27,7 @@ class SmartSDRFormService {
     });
 
     if (response) {
-      return response.json();
+      return true;
     }
 
     return false;
