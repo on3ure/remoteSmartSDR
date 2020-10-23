@@ -8,26 +8,31 @@ import InputField from './fields/InputField';
 const Form = () => {
   return (
     <Formik
-       initialValues={{ email: '', password: '' }}
-       validate={values => {
-         const errors = {};
+      initialValues={{
+        ip: '',
+        port: '',
+        delay: '',
+        offset: '',
+      }}
+      validate={values => {
+        const errors = {};
 
-         /* if (!values.email) {
-           errors.email = 'Required';
-         } else if (
-           !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-         ) {
-           errors.email = 'Invalid email address';
-         }*/
+        /* if (!values.email) {
+          errors.email = 'Required';
+        } else if (
+          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+        ) {
+          errors.email = 'Invalid email address';
+        }*/
 
-         return errors;
-       }}
-       onSubmit={(values, { setSubmitting }) => {
-         setTimeout(() => {
-           alert(JSON.stringify(values, null, 2));
-           setSubmitting(false);
-         }, 400);
-       }}
+        return errors;
+      }}
+      onSubmit={(values, { setSubmitting }) => {
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+          setSubmitting(false);
+        }, 400);
+      }}
      >
        {({
          values,
@@ -40,13 +45,14 @@ const Form = () => {
             <Card title="IP address">
               <InputField id="ip" name="ip" label="IP address" placeholder="..." maxLength="15" />
             </Card>
-            <Card title="PTT release delay">
+            <Card title="TCP port">
               <InputField id="port" name="port" label="TCP port" placeholder="..." maxLength="5" />
             </Card>
             <Card title="PTT release delay">
               <Slider
-                description="Push-to-Talk release delay"
-                name="slider1"
+                label="Push-to-Talk release delay"
+                id="delay"
+                name="delay"
                 min="0"
                 max="4"
                 steps={[100, 200, 300, 400 ,500]}
@@ -54,15 +60,16 @@ const Form = () => {
             </Card>
             <Card title="Offset">
               <Slider
-                description="Push-to-Talk offset"
-                name="slider2"
+                label="Push-to-Talk offset"
+                id="offset"
+                name="offset"
                 min="0"
                 max="12"
                 steps={[1, 5, 10, 15, 20, 25, 50, 100, 150, 200, 250, 500, 1000]}
               />
             </Card>
           </div>
-          <button type="submit" disabled={isSubmitting}>
+          <button type="submit" onClick={handleSubmit} disabled={isSubmitting}>
             Submit
           </button>
         </div>
