@@ -6,12 +6,12 @@ export default async (req, res) => {
   const {
     body,
     method,
-  } = req
+  } = req;
 
   const data = {
-    ip: null,
-    port: null,
-    delay: null,
+    smartSDRip: null,
+    smartSDRport: null,
+    pttDelay: null,
     offset: null,
   };
   
@@ -33,14 +33,14 @@ export default async (req, res) => {
           data[keys[key]] = item[1];
         });
       });
-      res.status(200).json(data)
+      res.status(200).json(data);
       break
     case 'PUT':
       await redis.mset(body);
-      res.status(200).json(body)
+      res.status(200).json(body);
       break
     default:
-      res.setHeader('Allow', ['GET', 'PUT'])
-      res.status(405).end(`Method ${method} Not Allowed`)
+      res.setHeader('Allow', ['GET', 'PUT']);
+      res.status(405).end(`Method ${method} Not Allowed`);
   }
 }
