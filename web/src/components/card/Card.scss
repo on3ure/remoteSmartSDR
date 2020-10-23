@@ -1,5 +1,19 @@
+@keyframes fadeInTranslate {
+  from {
+    opacity: 0;
+
+    transform: translate3d(0, 20px, 0);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 .card {
-  padding: 2.5rem 2rem;
+  padding: 3.5rem 3rem;
 
   background-color: $c-white;
 
@@ -17,7 +31,13 @@
     color: #424456;
   }
 
-  @media (min-width: $md) {
-    padding: 3.5rem 3rem;
+  opacity: 0;
+
+  animation: fadeInTranslate 850ms cubic-bezier(.4, .12, 0, 1) forwards;
+}
+
+@for $i from 1 to 5 {
+  .card:nth-child(#{$i}) {
+    animation-delay: $i * 75ms;
   }
 }
