@@ -2,7 +2,7 @@ $grid-columns: 12;
 
 .container {
   margin: auto;
-  padding: 0 1rem;
+  padding: 0 2rem;
   max-width: 92rem;
   width: 100%;
 }
@@ -16,16 +16,8 @@ $grid-columns: 12;
     display: block;
   }
 
-  &--gap-sm {
+  &--gap {
     gap: 2rem;
-  }
-  
-  &--gap-md {
-    gap: 2rem;
-  
-    @media (min-width: $md) {
-      gap: 4rem;
-    }
   }
 }
 

@@ -18,8 +18,8 @@ export default function Home() {
             RemoteSmartSDR
           </h1>
 
-          <div className="grid grid--gap-sm">
-            <div className="column-xs-6">
+          <div className="grid grid--gap">
+            <div className="column-xs-12 column-sm-6">
               <Card>
                 <div>
                   <label htmlFor="ip">IP address</label>
@@ -27,7 +27,7 @@ export default function Home() {
                 </div>
               </Card>
             </div>
-            <div className="column-xs-6">
+            <div className="column-xs-12 column-sm-6">
               <Card>
                 <div>
                   <label htmlFor="port">TCP port</label>
@@ -35,7 +35,7 @@ export default function Home() {
                 </div>
               </Card>
             </div>
-            <div className="column-xs-6">
+            <div className="column-xs-12 column-sm-6">
               <Card>
                 <Slider
                   label="PTT release delay"
@@ -46,7 +46,7 @@ export default function Home() {
                 />
               </Card>
             </div>
-            <div className="column-xs-6">
+            <div className="column-xs-12 column-sm-6">
               <Card>
                 <Slider
                   label="Offset"
