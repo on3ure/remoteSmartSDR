@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-
 import { Field } from 'formik';
 
 const Slider: FC<SliderProps> = ({
