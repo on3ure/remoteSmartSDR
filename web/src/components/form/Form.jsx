@@ -11,9 +11,9 @@ const Form = () => {
   return (
     <Formik
       initialValues={{
-        ip: '',
-        port: '',
-        delay: 500,
+        smartSDRip: '',
+        smartSDRport: '',
+        pttDelay: 500,
         offset: 250,
       }}
       validate={values => {
@@ -30,13 +30,18 @@ const Form = () => {
         return errors;
       }}
       onSubmit={(values, { setSubmitting }) => {
-        console.log('posting values:', values);
-        SmartSDRFormService.postData(values);
-        setSubmitting(false);
+        const postData = async (values) => {
+          const response = await SmartSDRFormService.postData(values);
+
+          if (response) {
+            setSubmitting(false);
+          }
+        };
+
+        postData(values);
       }}
      >
        {({
-         values,
          errors,
          handleSubmit,
          isSubmitting,
@@ -45,8 +50,8 @@ const Form = () => {
           <div className="form__grid">
             <Card title="IP address">
               <InputField
-                id="ip"
-                name="ip"
+                id="smartSDRip"
+                name="smartSDRip"
                 label="IP address"
                 placeholder="xxx.xxx.x.x"
                 maxLength="15"
@@ -54,8 +59,8 @@ const Form = () => {
             </Card>
             <Card title="TCP port">
               <InputField
-                id="port"
-                name="port"
+                id="smartSDRport"
+                name="smartSDRport"
                 label="TCP port"
                 placeholder="xxxx"
                 maxLength="5"
@@ -63,8 +68,8 @@ const Form = () => {
             </Card>
             <Card title="PTT release delay">
               <Slider
-                id="delay"
-                name="delay"
+                id="pttDelay"
+                name="pttDelay"
                 label="Push-to-Talk release delay"
                 min="0"
                 max="4"
