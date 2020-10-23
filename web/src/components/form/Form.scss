@@ -1,3 +1,9 @@
 .form {
   width: 100%;
+
+  &__grid {
+    display: grid;
+    grid-template: 1fr / 1fr 1fr;
+    grid-gap: 15px;
+  }
 }
