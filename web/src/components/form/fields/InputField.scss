@@ -4,7 +4,7 @@
   &__label {
     display: block;
 
-    margin-bottom: .5rem;
+    margin-bottom: space("xxs");
 
     font-size: 1.4rem;
     color: $c-grey;
@@ -13,13 +13,13 @@
   &__input {
     width: 100%;
 
-    padding: 1rem 1.3rem;
+    padding: space("xs") 1.3rem;
 
     border: 1px solid $c-grey;
     border-radius: 1rem;
     outline: 0;
 
-    transition: border ease 200ms, box-shadow ease 200ms;
+    @include transition(border, box-shadow);
 
     &:focus {
       border: 1px solid $c-blue;
