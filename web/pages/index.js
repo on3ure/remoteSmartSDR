@@ -41,6 +41,8 @@ export default function Home() {
                   label="PTT release delay"
                   description="Test"
                   name="slider1"
+                  min="100"
+                  max="500"
                 />
               </Card>
             </div>
@@ -50,6 +52,8 @@ export default function Home() {
                   label="Offset"
                   description="Test"
                   name="slider2"
+                  min="1"
+                  max="1000"
                 />
               </Card>
             </div>

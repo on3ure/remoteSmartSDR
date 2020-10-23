@@ -4,6 +4,8 @@ const Slider = ({
   label,
   description,
   name,
+  min,
+  max,
 }) => {
 
   const [number, setNumber] = useState(100);
@@ -23,7 +25,7 @@ const Slider = ({
       <div className="slider__description">
         { description }
       </div>
-      <input type="range" min="0" max="500" value={ number } onChange={ onRangeChange } name={ name } id={ name } className="slider__range" />
+      <input type="range" min={ min } max={ max } value={ number } onChange={ onRangeChange } name={ name } id={ name } className="slider__range" />
     </div>
   );
 };
