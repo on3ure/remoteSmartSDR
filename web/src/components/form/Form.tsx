@@ -7,15 +7,24 @@ import Slider from 'components/slider/Slider';
 import SmartSDRFormService from './services/SmartSDRFormService';
 import InputField from './fields/InputField';
 
+interface FormValues {
+  smartSDRip: string,
+  smartSDRport: string,
+  pttDelay: number,
+  offset: number,
+}
+
 const Form = () => {
+  const initialValues: FormValues = {
+    smartSDRip: '',
+    smartSDRport: '',
+    pttDelay: 500,
+    offset: 250,
+  };
+
   return (
     <Formik
-      initialValues={{
-        smartSDRip: '',
-        smartSDRport: '',
-        pttDelay: 500,
-        offset: 250,
-      }}
+      initialValues={initialValues}
       validate={values => {
         const errors = {};
 
