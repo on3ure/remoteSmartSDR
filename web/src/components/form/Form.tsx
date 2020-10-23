@@ -19,7 +19,13 @@ const Form = () => {
     <Formik
       initialValues={initialValues}
       validate={values => {
-        const errors = {};
+        let errors:FormValidateValues = {};
+
+        if (values.smartSDRip === '') {
+          errors.smartSDRip = 'Required';
+        } else if (values.smartSDRport === '') {
+          errors.smartSDRport = 'Required';
+        }
 
         return errors;
       }}
@@ -95,6 +101,11 @@ interface FormValues {
   smartSDRport: string,
   pttDelay: number,
   offset: number,
+}
+
+interface FormValidateValues {
+  smartSDRip?: string,
+  smartSDRport?: string,
 }
 
 export default Form;
