@@ -5,6 +5,7 @@ const Slider = ({
   name,
   min,
   max,
+  step,
   steps,
 }) => {
 
@@ -12,7 +13,8 @@ const Slider = ({
   const [outputNumber, setOutputNumber] = useState(0);
 
   useEffect(() => {
-    setOutputNumber(steps[0]);
+    setInputNumber(step);
+    setOutputNumber(steps[step]);
   }, []);
 
   const onRangeChange = (e) => {
