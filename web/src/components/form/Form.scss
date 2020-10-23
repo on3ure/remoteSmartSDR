@@ -11,6 +11,31 @@
       grid-gap: 4rem;
     }
   }
+
+  button {
+    margin-top: 4rem;
+    padding: 1.25rem 3rem;
+
+    background-color: $c-white;
+
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: $c-blue;
+
+    border-radius: 2rem;
+    border: 2px solid $c-blue;
+
+    cursor: pointer;
+
+    @include transition(background-color, color);
+
+    &:hover,
+    &:focus {
+      background-color: $c-blue;
+
+      color: $c-white;
+    }
+  }
 }
 
 @import "./fields/InputField";
