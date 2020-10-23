@@ -43,10 +43,10 @@ const Form = () => {
         <div className="form">
           <div className="form__grid">
             <Card title="IP address">
-              <InputField id="ip" name="ip" label="IP address" placeholder="..." maxLength="15" />
+              <InputField id="ip" name="ip" label="IP address" placeholder="xxx.xxx.x.x" maxLength="15" />
             </Card>
             <Card title="TCP port">
-              <InputField id="port" name="port" label="TCP port" placeholder="..." maxLength="5" />
+              <InputField id="port" name="port" label="TCP port" placeholder="xxxx" maxLength="5" />
             </Card>
             <Card title="PTT release delay">
               <Slider

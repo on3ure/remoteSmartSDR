@@ -13,16 +13,17 @@
   &__input {
     width: 100%;
 
-    padding: 1rem 1.5rem;
+    padding: 1rem 1.3rem;
 
     border: 1px solid $c-grey;
     border-radius: 1rem;
     outline: 0;
 
-    transition: border ease 200ms;
+    transition: border ease 200ms, box-shadow ease 200ms;
 
     &:focus {
       border: 1px solid $c-blue;
+      box-shadow: 0 4px 20px rgba($c-black, .1);
     }
   }
 }
