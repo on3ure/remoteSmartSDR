@@ -14,14 +14,14 @@
 
     font-size: 1.6rem;
     font-weight: 700;
-    color: #3C59E9;
+    color: $c-blue;
   }
 
   &__description {
     margin-bottom: 3.5rem;
 
     font-size: 1.4rem;
-    color: #9DA2B8;
+    color: $c-grey;
   }
 
   &__range {
@@ -37,7 +37,7 @@
       height: 2.4rem;
       border-radius: 50%; 
       background-color: $c-white;
-      border: .2rem solid #3C59E9;
+      border: .2rem solid $c-blue;
       cursor: pointer;
     }
 
@@ -46,7 +46,7 @@
       height: 2.4rem;
       border-radius: 50%;
       background-color: $c-white;
-      border: .2rem solid #3C59E9;
+      border: .2rem solid $c-blue;
       cursor: pointer;
     }
   }

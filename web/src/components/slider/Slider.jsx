@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
 const Slider = ({
-  label,
   description,
   name,
   min,
@@ -23,9 +22,6 @@ const Slider = ({
 
   return (
     <div className="slider">
-      <label>
-        { label }
-      </label>
       <div className="slider__value">
         { outputNumber }ms
       </div>

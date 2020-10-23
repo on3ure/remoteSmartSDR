@@ -3,6 +3,7 @@ import { Formik } from 'formik';
 
 import Card from 'components/card/Card';
 import Slider from 'components/slider/Slider';
+import InputField from './fields/InputField';
 
 const Form = () => {
   return (
@@ -36,21 +37,14 @@ const Form = () => {
        }) => (
         <div className="form">
           <div className="form__grid">
-            <Card>
-              <div>
-                <label htmlFor="ip">IP address</label>
-                <input type="text" id="ip" name="ip" maxLength="15" />
-              </div>
+            <Card title="IP address">
+              <InputField id="ip" name="ip" label="IP address" placeholder="..." maxLength="15" />
             </Card>
-            <Card>
-              <div>
-                <label htmlFor="port">TCP port</label>
-                <input type="text" id="port" name="port" maxLength="5" />
-              </div>
+            <Card title="PTT release delay">
+              <InputField id="port" name="port" label="TCP port" placeholder="..." maxLength="5" />
             </Card>
-            <Card>
+            <Card title="PTT release delay">
               <Slider
-                label="PTT release delay"
                 description="Push-to-Talk release delay"
                 name="slider1"
                 min="0"
@@ -58,9 +52,8 @@ const Form = () => {
                 steps={[100, 200, 300, 400 ,500]}
               />
             </Card>
-            <Card>
+            <Card title="Offset">
               <Slider
-                label="Offset"
                 description="Push-to-Talk offset"
                 name="slider2"
                 min="0"

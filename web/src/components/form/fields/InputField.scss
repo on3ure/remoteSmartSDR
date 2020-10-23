@@ -1,0 +1,26 @@
+.input-field {
+  width: 100%;
+
+  &__label {
+    display: block;
+
+    margin-bottom: .5rem;
+
+    font-size: 1.4rem;
+    color: $c-grey;
+  }
+
+  &__input {
+    width: 100%;
+
+    padding: 1rem 1.5rem;
+
+    border: 1px solid $c-grey;
+    border-radius: 1rem;
+    outline: 0;
+
+    &:focus {
+      border: 1px solid $c-blue;
+    }
+  }
+}
