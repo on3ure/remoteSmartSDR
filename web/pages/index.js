@@ -39,7 +39,7 @@ export default function Home() {
               <Card>
                 <Slider
                   label="PTT release delay"
-                  description="Test"
+                  description="Push-to-Talk release delay"
                   name="slider1"
                   min="0"
                   max="4"
@@ -51,7 +51,7 @@ export default function Home() {
               <Card>
                 <Slider
                   label="Offset"
-                  description="Test"
+                  description="Push-to-Talk offset"
                   name="slider2"
                   min="0"
                   max="12"
