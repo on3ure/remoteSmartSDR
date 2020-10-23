@@ -55,6 +55,7 @@ const Form = () => {
                 name="delay"
                 min="0"
                 max="4"
+                step="4"
                 steps={[100, 200, 300, 400 ,500]}
               />
             </Card>
@@ -65,6 +66,7 @@ const Form = () => {
                 name="offset"
                 min="0"
                 max="12"
+                step="10"
                 steps={[1, 5, 10, 15, 20, 25, 50, 100, 150, 200, 250, 500, 1000]}
               />
             </Card>

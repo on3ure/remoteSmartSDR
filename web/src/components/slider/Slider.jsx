@@ -1,17 +1,20 @@
 import React, {useEffect, useState} from 'react';
 
 const Slider = ({
-  description,
+  label,
+  id,
   name,
   min,
   max,
+  step,
   steps,
 }) => {
   const [inputNumber, setInputNumber] = useState(0);
   const [outputNumber, setOutputNumber] = useState(0);
 
   useEffect(() => {
-    setOutputNumber(steps[0]);
+    setInputNumber(step);
+    setOutputNumber(steps[step]);
   }, []);
 
   const onRangeChange = (event) => {
@@ -24,12 +27,12 @@ const Slider = ({
   return (
     <div className="slider">
       <div className="slider__value">
-        { outputNumber }ms
+        {outputNumber}ms
       </div>
-      <div className="slider__description">
-        { description }
-      </div>
-      <input type="range" min={ min } max={ max } value={ inputNumber } onChange={ onRangeChange } name={ name } id={ name } className="slider__range" />
+      <label htmlFor={name} className="slider__label">
+        {label}
+      </label>
+      <input id={id} name={name} type="range" min={min} max={max} value={inputNumber} onChange={onRangeChange} className="slider__range" />
     </div>
   );
 };
