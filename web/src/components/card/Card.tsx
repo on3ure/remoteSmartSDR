@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-const Card = ({
+const Card: FC<CardProps> = ({
   title,
   children,
 }) => {
@@ -13,5 +13,9 @@ const Card = ({
     </div>
   );
 };
+
+interface CardProps {
+  title: string;
+}
 
 export default Card;

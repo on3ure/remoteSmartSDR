@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, { FC } from 'react';
 
 import { Field } from 'formik';
 
-const Slider = ({ id, name, label, min, max, steps }) => {
+const Slider: FC<SliderProps> = ({ id, name, label, min, max, steps }) => {
   return (
     <div className="slider">
       <Field
@@ -37,5 +37,14 @@ const Slider = ({ id, name, label, min, max, steps }) => {
     </div>
   );
 };
+
+interface SliderProps {
+  id: string;
+  name: string;
+  label: string;
+  min: number;
+  max: number;
+  steps: number[];
+}
 
 export default Slider;
