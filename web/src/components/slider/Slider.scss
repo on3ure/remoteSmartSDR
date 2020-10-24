@@ -1,6 +1,6 @@
 .slider {
   &__value {
-    margin-bottom: .5rem;
+    margin-bottom: space("xxs");
 
     font-size: 1.6rem;
     font-weight: 700;
@@ -8,7 +8,7 @@
   }
 
   &__label {
-    margin-bottom: 3.5rem;
+    margin-bottom: space("l");
 
     font-size: 1.4rem;
     color: $c-grey;
@@ -17,9 +17,11 @@
   &__range {
     width: 100%;
     height: .1rem;
+
     background-color: #D8DBE8;
     outline: none;
-    transition: opacity .2s;
+    
+    @include transition(opacity);
     
     &::-webkit-slider-thumb {
       appearance: none;

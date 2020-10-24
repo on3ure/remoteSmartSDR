@@ -4,17 +4,17 @@
   &__grid {
     display: grid;
     grid-template: 1fr / 1fr;
-    grid-gap: 2rem;
+    grid-gap: space("m");
 
     @media (min-width: $sm) {
       grid-template: 1fr / 1fr 1fr;
-      grid-gap: 4rem;
+      grid-gap: space("l");
     }
   }
 
   button {
-    margin-top: 4rem;
-    padding: 1.25rem 3rem;
+    margin-top: space("l");
+    padding: space("s") space("l");
 
     background-color: $c-white;
 

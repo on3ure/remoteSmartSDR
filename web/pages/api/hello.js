@@ -9,10 +9,10 @@ export default async (req, res) => {
   } = req;
 
   const data = {
-    smartSDRip: null,
-    smartSDRport: null,
-    pttDelay: null,
-    offset: null,
+    smartSDRip: '',
+    smartSDRport: '',
+    pttDelay: undefined,
+    offset: undefined,
   };
   
   switch (method) {
@@ -25,7 +25,7 @@ export default async (req, res) => {
       .exec()
       .then((result) => {
         result.forEach((item, key) => {
-          if (item[0]) {
+          if (item[0] || !item[1]) {
             console.error(item[0]);
             return;
           }

@@ -9,13 +9,12 @@ import InputField from './fields/InputField';
 
 const Form = () => {
 
-  const [initialValues, setInitialValues] = useState({});
+  const [initialValues, setInitialValues] = useState<FormValues | undefined>(undefined);
 
   useEffect(() => {
     const fetchInitialData = async () => {
       const data = await SmartSDRFormService.getSettings()
       if (data) {
-        console.log(data);
         setInitialValues(data);
       }
     }
@@ -23,7 +22,7 @@ const Form = () => {
     fetchInitialData();
   }, []);
 
-  if (!Object.keys(initialValues).length) {
+  if (!initialValues) {
     return false;
   }
 
@@ -31,7 +30,13 @@ const Form = () => {
     <Formik
       initialValues={initialValues}
       validate={values => {
-        const errors = {};
+        let errors:FormValidateValues = {};
+
+        if (values.smartSDRip === '') {
+          errors.smartSDRip = 'This field is required';
+        } else if (values.smartSDRport === '') {
+          errors.smartSDRport = 'This field is required';
+        }
 
         return errors;
       }}
@@ -39,7 +44,7 @@ const Form = () => {
         const postData = async (values) => {
           const response = await SmartSDRFormService.postData(values);
 
-          if (response) {
+          if (response && response === true) {
             setSubmitting(false);
           }
         };
@@ -47,11 +52,7 @@ const Form = () => {
         postData(values);
       }}
      >
-       {({
-         errors,
-         handleSubmit,
-         isSubmitting,
-       }) => (
+       {({ handleSubmit, isSubmitting }) => (
         <div className="form">
           <div className="form__grid">
             <Card title="IP address">
@@ -60,7 +61,7 @@ const Form = () => {
                 name="smartSDRip"
                 label="IP address"
                 placeholder="xxx.xxx.x.x"
-                maxLength="15"
+                maxLength={15}
               />
             </Card>
             <Card title="TCP port">
@@ -69,7 +70,7 @@ const Form = () => {
                 name="smartSDRport"
                 label="TCP port"
                 placeholder="xxxx"
-                maxLength="5"
+                maxLength={5}
               />
             </Card>
             <Card title="PTT release delay">
@@ -77,8 +78,8 @@ const Form = () => {
                 id="pttDelay"
                 name="pttDelay"
                 label="Push-to-Talk release delay"
-                min="0"
-                max="4"
+                min={0}
+                max={4}
                 steps={[100, 200, 300, 400 ,500]}
               />
             </Card>
@@ -87,13 +88,13 @@ const Form = () => {
                 id="offset"
                 name="offset"
                 label="Push-to-Talk offset"
-                min="0"
-                max="12"
+                min={0}
+                max={12}
                 steps={[1, 5, 10, 15, 20, 25, 50, 100, 150, 200, 250, 500, 1000]}
               />
             </Card>
           </div>
-          <button type="submit" onClick={handleSubmit} disabled={isSubmitting}>
+          <button type="submit" onClick={() => handleSubmit()} disabled={isSubmitting}>
             Submit
           </button>
         </div>
@@ -101,5 +102,17 @@ const Form = () => {
     </Formik>
   );
 };
+
+interface FormValues {
+  smartSDRip: string,
+  smartSDRport: string,
+  pttDelay: number|undefined,
+  offset: number|undefined,
+}
+
+interface FormValidateValues {
+  smartSDRip?: string,
+  smartSDRport?: string,
+}
 
 export default Form;
