@@ -8,12 +8,12 @@ import SmartSDRFormService from './services/SmartSDRFormService';
 import InputField from './fields/InputField';
 
 const Form = () => {
-
   const [initialValues, setInitialValues] = useState<FormValues | undefined>(undefined);
 
   useEffect(() => {
     const fetchInitialData = async () => {
-      const data = await SmartSDRFormService.getSettings()
+      const data = await SmartSDRFormService.getSettings();
+      
       if (data) {
         setInitialValues(data);
       }
@@ -23,7 +23,9 @@ const Form = () => {
   }, []);
 
   if (!initialValues) {
-    return false;
+    return (
+      <div>Loading...</div>
+    );
   }
 
   return (

@@ -1,6 +1,5 @@
 class SmartSDRFormService {
   static getSettings = async (): Promise<any> => {
-
     const response = await fetch('/api/hello', {
       method: 'GET',
       credentials: 'same-origin',

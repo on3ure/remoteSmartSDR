@@ -1,8 +1,8 @@
 import Head from 'next/head';
 
-import Form from 'components/form/Form';
+import { Main } from 'pages/Main';
 
-export default function Home() {
+const Home = () => {
   return (
     <div>
       <Head>
@@ -13,17 +13,11 @@ export default function Home() {
 
       <main>
         <div className="container">
-          <h1>
-            RemoteSmartSDR
-          </h1>
-
-          <Form />
+          <Main />
         </div>      
       </main>
-
-      <footer>
-
-      </footer>
     </div>
   );
 }
+
+export default Home;
