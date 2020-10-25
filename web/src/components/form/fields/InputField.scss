@@ -18,7 +18,7 @@
   &__label {
     display: block;
 
-    margin-bottom: space("xxs");
+    margin-bottom: space("xs");
 
     font-size: 1.4rem;
     color: $c-grey-200;
@@ -27,7 +27,7 @@
   &__input {
     width: 100%;
 
-    padding: space("xs") 1.3rem;
+    padding: space("xs") space("s");
 
     border: 1px solid #D8DBE8;
     border-radius: 1rem;
@@ -42,9 +42,9 @@
   }
 
   &__error {
-    margin-top: space("xxs");
+    margin-top: space("xs");
 
-    font-size: 12px;
+    font-size: 1.4rem;
     color: $c-error;
 
     opacity: 0;

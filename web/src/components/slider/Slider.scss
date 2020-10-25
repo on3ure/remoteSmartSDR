@@ -8,7 +8,9 @@
   }
 
   &__label {
-    margin-bottom: space("l");
+    display: block;
+
+    margin-bottom: space("m");
 
     font-size: 1.4rem;
     color: $c-grey-200;

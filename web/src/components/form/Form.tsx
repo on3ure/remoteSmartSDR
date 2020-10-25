@@ -41,37 +41,41 @@ export const Form = () => {
 
         if (values.smartSDRip === '' || values.smartSDRport === '') {
           if (values.smartSDRip === '') {
-            errors.smartSDRip = 'This field is required';
+            errors.smartSDRip = 'This field is required.';
           }
           
           if (values.smartSDRport === '') {
-            errors.smartSDRport = 'This field is required';
+            errors.smartSDRport = 'This field is required.';
           }
         } else {
           if (validateIPAddress(values.smartSDRip) === false) {
-            errors.smartSDRip = 'Please fill in a valid IP address';
+            errors.smartSDRip = 'Please fill in a valid IP address.';
           }
 
           if (validatePort(values.smartSDRport) === false) {
-            errors.smartSDRport = 'Please fill in a valid port number between 1024 and 65535';
+            errors.smartSDRport = 'Please fill in a valid port number between 1024 and 65535.';
           }
         }
 
         return errors;
       }}
-      onSubmit={(values, { setSubmitting }) => {
+      onSubmit={(values, { setSubmitting, setStatus }) => {
         const postData = async (values) => {
           const response = await SmartSDRFormService.postData(values);
 
           if (response && response === true) {
             setSubmitting(false);
+            setStatus('New values were successfully stored.');
+            setTimeout(() => {
+              setStatus('');
+            }, 2500);   
           }
         };
 
         postData(values);
       }}
      >
-       {({ handleSubmit, isSubmitting }) => (
+       {({ handleSubmit, isSubmitting, status }) => (
         <div className="form">
           <div className="form__grid">
             <Card title="IP address">
@@ -116,6 +120,11 @@ export const Form = () => {
           <button type="submit" onClick={() => handleSubmit()} disabled={isSubmitting}>
             Submit
           </button>
+          {status &&
+            <div className="form__status">
+              <p>{status}</p>
+            </div>
+          }
         </div>
        )}
     </Formik>

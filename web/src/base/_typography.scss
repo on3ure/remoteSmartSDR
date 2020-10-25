@@ -6,10 +6,6 @@
 }
 
 h1 {
-  margin: 2rem 0;
+  margin: space("l") 0;
   color: $c-grey-300;
-
-  @media (min-width: $sm) {
-    margin: 4rem 0;
-  }
 }
