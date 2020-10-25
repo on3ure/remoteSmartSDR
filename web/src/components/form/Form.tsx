@@ -9,6 +9,8 @@ import { InputField } from './fields/InputField';
 
 import { PTTReleaseDelay, offset } from 'constants/KeybowValues';
 
+import { validateIPAddress, validatePort } from 'helpers/validations';
+
 export const Form = () => {
   const [initialValues, setInitialValues] = useState<FormValues | undefined>(undefined);
 
@@ -36,10 +38,22 @@ export const Form = () => {
       validate={values => {
         let errors:FormValidateValues = {};
 
-        if (values.smartSDRip === '') {
-          errors.smartSDRip = 'This field is required';
-        } else if (values.smartSDRport === '') {
-          errors.smartSDRport = 'This field is required';
+        if (values.smartSDRip === '' || values.smartSDRport === '') {
+          if (values.smartSDRip === '') {
+            errors.smartSDRip = 'This field is required';
+          }
+          
+          if (values.smartSDRport === '') {
+            errors.smartSDRport = 'This field is required';
+          }
+        } else {
+          if (validateIPAddress(values.smartSDRip) === false) {
+            errors.smartSDRip = 'Please fill in a valid IP address';
+          }
+
+          if (validatePort(values.smartSDRport) === false) {
+            errors.smartSDRport = 'Please fill in a valid port number';
+          }
         }
 
         return errors;
