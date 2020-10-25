@@ -3,7 +3,9 @@ const validateIPAddress = (ip: string): boolean => {
 };
 
 const validatePort = (port: string): boolean => {
-  return /^\d{1,5}([ ]\d{1,5})*$/.test(port);
+  const portToNumber: number = parseInt(port, 10);
+
+  return !isNaN(portToNumber) && (portToNumber >= 1024 && portToNumber <= 65535);
 };
 
 export { validateIPAddress, validatePort };

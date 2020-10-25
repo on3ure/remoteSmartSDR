@@ -52,7 +52,7 @@ export const Form = () => {
           }
 
           if (validatePort(values.smartSDRport) === false) {
-            errors.smartSDRport = 'Please fill in a valid port number';
+            errors.smartSDRport = 'Please fill in a valid port number between 1024 and 65535';
           }
         }
 
