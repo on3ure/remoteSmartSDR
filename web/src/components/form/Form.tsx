@@ -7,6 +7,8 @@ import { Card } from 'components/card/Card';
 import { Slider } from 'components/slider/Slider';
 import { InputField } from './fields/InputField';
 
+import { PTTReleaseDelay, offset } from 'constants/KeybowValues';
+
 export const Form = () => {
   const [initialValues, setInitialValues] = useState<FormValues | undefined>(undefined);
 
@@ -81,8 +83,9 @@ export const Form = () => {
                 name="pttDelay"
                 label="Push-to-Talk release delay"
                 min={0}
-                max={4}
-                steps={[100, 200, 300, 400 ,500]}
+                max={PTTReleaseDelay.actualValues.length - 1}
+                values={PTTReleaseDelay.values}
+                actualValues={PTTReleaseDelay.actualValues}
               />
             </Card>
             <Card title="Offset">
@@ -91,8 +94,9 @@ export const Form = () => {
                 name="offset"
                 label="Push-to-Talk offset"
                 min={0}
-                max={12}
-                steps={[1, 5, 10, 15, 20, 25, 50, 100, 150, 200, 250, 500, 1000]}
+                max={offset.actualValues.length - 1}
+                values={offset.values}
+                actualValues={offset.actualValues}
               />
             </Card>
           </div>

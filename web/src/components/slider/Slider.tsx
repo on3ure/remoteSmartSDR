@@ -7,21 +7,26 @@ export const Slider: FC<SliderProps> = ({
   label,
   min,
   max,
-  steps,
+  values,
+  actualValues,
 }) => (
   <div className="slider">
     <Field
       render={({ form, field }) => {
-        const onRangeChange = (event) => {
-          const { value: newRange } = event.target;
+        const valueFromFormData: number = field.value[name];
+        const actualValuesIndex = actualValues.findIndex(value => value === valueFromFormData.toString());
 
-          form.setFieldValue(name, steps[newRange]);
+        const onRangeChange = (event): void => {
+          event.preventDefault();
+
+          const { value } = event.target;
+          form.setFieldValue(name, actualValues[parseInt(value, 10)]);
         };
         
         return (
           <>
             <div className="slider__value">
-              {field.value[name]}ms
+              {values[actualValuesIndex]}ms
             </div>
             <label htmlFor={name} className="slider__label">
               {label}
@@ -33,6 +38,7 @@ export const Slider: FC<SliderProps> = ({
               min={min}
               max={max}
               onChange={onRangeChange}
+              defaultValue={actualValuesIndex}
               className="slider__range"
             />
           </>
@@ -48,5 +54,6 @@ interface SliderProps {
   label: string;
   min: number;
   max: number;
-  steps: number[];
+  values: number[];
+  actualValues: string[];
 }
