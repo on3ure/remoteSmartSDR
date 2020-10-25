@@ -9,7 +9,7 @@ export const Loader = () => (
             <stop stopColor="#3c59e9" offset="100%"/>
         </linearGradient>
     </defs>
-    <g fill="none" fill-rule="evenodd">
+    <g fill="none" fillRule="evenodd">
         <g transform="translate(1 1)">
             <path d="M36 18c0-9.94-8.06-18-18-18" stroke="url(#a)" strokeWidth="2">
                 <animateTransform
