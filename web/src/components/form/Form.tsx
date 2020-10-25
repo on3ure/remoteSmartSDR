@@ -97,7 +97,6 @@ export const Form = () => {
                 id="pttDelay"
                 name="pttDelay"
                 label="Push-to-Talk release delay"
-                min={0}
                 max={PTTReleaseDelay.actualValues.length - 1}
                 values={PTTReleaseDelay.values}
                 actualValues={PTTReleaseDelay.actualValues}
@@ -108,7 +107,6 @@ export const Form = () => {
                 id="offset"
                 name="offset"
                 label="Push-to-Talk offset"
-                min={0}
                 max={offset.actualValues.length - 1}
                 values={offset.values}
                 actualValues={offset.actualValues}

@@ -5,7 +5,6 @@ export const Slider: FC<SliderProps> = ({
   id,
   name,
   label,
-  min,
   max,
   values,
   actualValues,
@@ -35,7 +34,7 @@ export const Slider: FC<SliderProps> = ({
               id={id}
               name={name}
               type="range"
-              min={min}
+              min="0"
               max={max}
               onChange={onRangeChange}
               defaultValue={actualValuesIndex}
@@ -52,7 +51,6 @@ interface SliderProps {
   id: string;
   name: string;
   label: string;
-  min: number;
   max: number;
   values: number[];
   actualValues: string[];
