@@ -23,6 +23,7 @@ export const InputField: FC<InputFieldProps> = ({
         <div>
           <input
             {...field}
+            id={id}
             placeholder={placeholder}
             maxLength={maxLength}
             className="input-field__input"
