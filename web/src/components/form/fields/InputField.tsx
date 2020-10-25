@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Field } from 'formik';
 
-const InputField: FC<InputFieldProps> = ({
+export const InputField: FC<InputFieldProps> = ({
   id,
   name,
   label,
@@ -43,5 +43,3 @@ interface InputFieldProps {
   placeholder: string;
   maxLength: number;
 }
-
-export default InputField;

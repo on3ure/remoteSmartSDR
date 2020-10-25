@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Field } from 'formik';
 
-const Slider: FC<SliderProps> = ({
+export const Slider: FC<SliderProps> = ({
   id,
   name,
   label,
@@ -50,5 +50,3 @@ interface SliderProps {
   max: number;
   steps: number[];
 }
-
-export default Slider;

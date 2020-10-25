@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Formik } from 'formik';
 
-import Card from 'components/card/Card';
-import Slider from 'components/slider/Slider';
+import { SmartSDRFormService } from './services/SmartSDRFormService';
 
-import SmartSDRFormService from './services/SmartSDRFormService';
-import InputField from './fields/InputField';
+import { Card } from 'components/card/Card';
+import { Slider } from 'components/slider/Slider';
+import { InputField } from './fields/InputField';
 
-const Form = () => {
+export const Form = () => {
   const [initialValues, setInitialValues] = useState<FormValues | undefined>(undefined);
 
   useEffect(() => {
@@ -116,5 +116,3 @@ interface FormValidateValues {
   smartSDRip?: string,
   smartSDRport?: string,
 }
-
-export default Form;

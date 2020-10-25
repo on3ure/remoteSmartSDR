@@ -1,4 +1,4 @@
-class SmartSDRFormService {
+export class SmartSDRFormService {
   static getSettings = async (): Promise<any> => {
     const response = await fetch('/api/hello', {
       method: 'GET',
@@ -32,5 +32,3 @@ class SmartSDRFormService {
     return false;
   };
 }
-
-export default SmartSDRFormService;
