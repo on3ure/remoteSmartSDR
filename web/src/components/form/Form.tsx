@@ -5,6 +5,7 @@ import { SmartSDRFormService } from './services/SmartSDRFormService';
 
 import { Card } from 'components/card/Card';
 import { Slider } from 'components/slider/Slider';
+import { Loader } from 'components/loader/Loader';
 import { InputField } from './fields/InputField';
 
 import { PTTReleaseDelay, offset } from 'constants/KeybowValues';
@@ -28,7 +29,7 @@ export const Form = () => {
 
   if (!initialValues) {
     return (
-      <div>Loading...</div>
+      <Loader />
     );
   }
 
