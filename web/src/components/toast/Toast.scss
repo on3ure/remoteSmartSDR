@@ -1,0 +1,43 @@
+@keyframes toastAppear {
+  0% {
+    opacity: 0;
+
+    transform: translate3d(0, -#{space(xs)}, 0);
+  }
+
+  40%,
+  60% {
+    opacity: 1;
+
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform: translate3d(0, -#{space(xs)}, 0);
+  }
+}
+
+.toast {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+
+  max-width: 32rem;
+
+  padding: space("m");
+
+  background-color: $c-white;
+
+  border: .2rem solid $c-blue;
+  border-radius: 2rem;
+
+  box-shadow: 0 .5rem 2rem rgba($c-grey-300, .1);
+
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: $c-blue;
+
+  animation: toastAppear 2500ms cubic-bezier(.8, .1, 0, 1) forwards;
+}

@@ -5,6 +5,7 @@ import { SmartSDRFormService } from './services/SmartSDRFormService';
 
 import { Loader } from 'components/loader/Loader';
 import { Card } from 'components/card/Card';
+import { Toast } from 'components/toast/Toast';
 import { Slider } from './fields/Slider';
 import { InputField } from './fields/InputField';
 
@@ -65,6 +66,7 @@ export const Form = () => {
 
           if (response && response === true) {
             setSubmitting(false);
+
             setStatus('New values were successfully stored.');
             setTimeout(() => {
               setStatus('');
@@ -121,9 +123,9 @@ export const Form = () => {
             Submit
           </button>
           {status &&
-            <div className="form__status">
-              <p>{status}</p>
-            </div>
+            <Toast
+              message={status}
+            />
           }
         </div>
        )}

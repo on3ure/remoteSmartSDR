@@ -1,17 +1,3 @@
-@keyframes statusAppear {
-  from {
-    opacity: 0;
-
-    transform: translate3d(0, -#{space(xs)}, 0);
-  }
-
-  to {
-    opacity: 1;
-
-    transform: translate3d(0, 0, 0);
-  }
-}
-
 .form {
   width: 100%;
 
@@ -48,20 +34,6 @@
       background-color: $c-blue;
 
       color: $c-white;
-    }
-  }
-
-  &__status {
-    margin-top: space("xs");
-
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: $c-blue;
-
-    animation: statusAppear 300ms cubic-bezier(.8, .1, 0, 1) forwards;
-
-    p {
-      margin: 0;
     }
   }
 }
