@@ -8,3 +8,20 @@ https://roskosch.de/smartsdr-for-mac/
 Left key shifts current frequency down with a configurable frequency shift
 Middle key is PTT toggle ... release has a configurable delay between 100ms en 500ms
 Right key shifts current frequency up with a configurable frequency shift
+
+## Getting started
+
+### Running web interface with docker-compose
+
+- Install docker compose https://docs.docker.com/compose/install/
+- Run ``docker-compose up``
+- The interface is running on localhost:80
+
+### Running on Raspberry Pi
+- Install nodejs and yarn on the raspberry
+- Make sure that the enviorment variables ``REDIS_HOST`` and ``REDIS_PORT`` are set
+- Go to the web folder of this project
+- Run ``yarn`` to download all dependencies 
+- Run ``yarn build`` to compile the application
+- Run ``sudo yarn start`` to start the application. We need to run this as a privilaged user to bind to port 80 
+- The application is now running on localhost:80
