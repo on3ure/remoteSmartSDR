@@ -67,10 +67,8 @@ export const Form = () => {
           if (response && response === true) {
             setSubmitting(false);
 
+            setStatus('');
             setStatus('New values were successfully stored.');
-            setTimeout(() => {
-              setStatus('');
-            }, 2500);   
           }
         };
 

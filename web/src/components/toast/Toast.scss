@@ -2,11 +2,11 @@
   0% {
     opacity: 0;
 
-    transform: translate3d(0, -#{space(xs)}, 0);
+    transform: translate3d(0, 0, 0);
   }
 
-  40%,
-  60% {
+  10%,
+  85% {
     opacity: 1;
 
     transform: translate3d(0, 0, 0);
@@ -15,7 +15,7 @@
   100% {
     opacity: 0;
 
-    transform: translate3d(0, -#{space(xs)}, 0);
+    transform: translate3d(0, #{space(s)}, 0);
   }
 }
 
@@ -39,5 +39,5 @@
   font-weight: 700;
   color: $c-blue;
 
-  animation: toastAppear 2500ms cubic-bezier(.8, .1, 0, 1) forwards;
+  animation: toastAppear 5s $animation-transition--default forwards;
 }
