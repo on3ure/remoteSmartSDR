@@ -16,6 +16,7 @@ export const Toast: FC<ToastProps> = ({
   return (
     <div className="toast">
       {message}
+      <button type="button" className="toast__close" onClick={() => selfDestruct(true)} />
     </div>
   );
 };
