@@ -18,7 +18,7 @@ export const Slider: FC<SliderProps> = ({
         const onRangeChange = (event): void => {
           event.preventDefault();
 
-          const { value } = event.target;
+          const { value }: { value: string } = event.target;
           form.setFieldValue(name, actualValues[parseInt(value, 10)]);
         };
         
