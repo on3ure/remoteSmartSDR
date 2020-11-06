@@ -12,8 +12,12 @@ export const Slider: FC<SliderProps> = ({
   <div className="slider">
     <Field
       render={({ form, field }) => {
+        let actualValuesIndex: number = 0;
         const valueFromFormData: number = field.value[name];
-        const actualValuesIndex: number = actualValues.findIndex(value => value === valueFromFormData.toString());
+
+        if (valueFromFormData) {
+          actualValuesIndex = actualValues.findIndex(value => value === valueFromFormData.toString())
+        }
 
         const onRangeChange = (event): void => {
           event.preventDefault();
