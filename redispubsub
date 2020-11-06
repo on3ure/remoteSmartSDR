@@ -2,5 +2,5 @@ channels
 SmartSDRfrequency
 SmartSDRptt
 
-frequency in HZ
+frequency in HZ (integer)
 ptt false or true (boolean)

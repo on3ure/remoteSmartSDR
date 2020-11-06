@@ -23,7 +23,7 @@ async def flex_msg(message):
     ip = redis.get('smartSDRip')
     port = int(redis.get('smartSDRport'))
     reader, writer = await asyncio.open_connection(
-        ip, port)
+ip, port)
     writer.write(message.encode())
     writer.close()
 
