@@ -11,8 +11,8 @@ export default async (req, res) => {
   const data = {
     smartSDRip: '',
     smartSDRport: '',
-    pttDelay: undefined,
-    offset: undefined,
+    pttDelay: '5',
+    offset: '250',
   };
   
   switch (method) {
