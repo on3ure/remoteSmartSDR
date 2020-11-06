@@ -1,0 +1,6 @@
+channels
+SmartSDRfrequency
+SmartSDRptt
+
+frequency in HZ
+ptt false or true (boolean)
