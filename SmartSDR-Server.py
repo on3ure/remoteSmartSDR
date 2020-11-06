@@ -54,6 +54,7 @@ async def tcp():
             print(response.json)
     setfreq = redis.get('setfreq')
     if setfreq:
+        redis.set('lastfreq', setfreq)
         message = 'ZZFA' + str(setfreq).zfill(11) + ';'
         writer.write(message.encode())
         writer.close()
