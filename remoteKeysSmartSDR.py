@@ -19,45 +19,18 @@ def myround(x):
     return offset * round(x/offset)
 
 
-async def flex_msg(message):
-    ip = redis.get('smartSDRip')
-    port = int(redis.get('smartSDRport'))
-    reader, writer = await asyncio.open_connection(
-ip, port)
-    writer.write(message.encode())
-    writer.close()
-
-
 async def flex_freq_up():
-    ip = redis.get('smartSDRip')
-    port = int(redis.get('smartSDRport'))
+    lastfreq = redis.get('lastfreq')
     offset = redis.get('offset')
-    reader, writer = await asyncio.open_connection(
-        ip, port)
-    message = 'ZZFA;'
-    writer.write(message.encode())
-    data = await reader.read(100)
-    i = myround(int(data.decode()[4:-2] + '0')) + int(offset)
-    message = str(i)
-    message = 'ZZFA' + message.zfill(11) + ';'
-    writer.write(message.encode())
-    writer.close()
+    i = myround(int(lastfreq) + int(offset))
+    redis.set('setfreq', str(i))
 
 
 async def flex_freq_down():
-    ip = redis.get('smartSDRip')
-    port = int(redis.get('smartSDRport'))
+    lastfreq = redis.get('lastfreq')
     offset = redis.get('offset')
-    reader, writer = await asyncio.open_connection(
-        ip, port)
-    message = 'ZZFA;'
-    writer.write(message.encode())
-    data = await reader.read(100)
-    i = myround(int(data.decode()[4:-2] + '0')) - int(offset)
-    message = str(i)
-    message = 'ZZFA' + message.zfill(11) + ';'
-    writer.write(message.encode())
-    writer.close()
+    i = myround(int(lastfreq) - int(offset))
+    redis.set('setfreq', str(i))
 
 
 @keybow.on()
@@ -72,11 +45,11 @@ def handle_key(index, state):
             if ptt == 1:
                 delay = int(redis.get('pttDelay'))/10
                 time.sleep(delay)
-                asyncio.run(flex_msg('ZZTX0;'))
+                redis.set('pttoff', '1')
                 keybow.set_led(index, 0, 0, 0)
                 ptt = 0
             else:
-                asyncio.run(flex_msg('ZZTX1;'))
+                redis.set('ptton', '1')
                 keybow.set_led(index, 255, 0, 0)
                 ptt = 1
 
