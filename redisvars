@@ -4,5 +4,6 @@ smartSDRip
 smartSDRport
 cloudlogURL
 cloudlogAPIkey
+remoteShackEnabled (True/False)
 remoteShackURL
 remoteShackAPIkey
