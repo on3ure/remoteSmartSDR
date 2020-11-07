@@ -7,3 +7,7 @@ cloudlogAPIkey
 remoteShackEnabled (True/False)
 remoteShackURL
 remoteShackAPIkey
+
+setfreq -> sets the frequency
+ptton -> (any value) triggers ptt
+pttoff -> (any value) stops ptt
