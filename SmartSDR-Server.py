@@ -54,6 +54,7 @@ async def tcp():
             print(response.json)
     setfreq = redis.get('setfreq')
     if setfreq:
+        redis.publish('SmartSDRfrequency', setfreq)
         redis.set('lastfreq', setfreq)
         message = 'ZZFA' + str(setfreq).zfill(11) + ';'
         writer.write(message.encode())
@@ -78,7 +79,7 @@ async def tcp():
 async def main():
     while True:
         await tcp()
-        await asyncio.sleep(0.1)
+        await asyncio.sleep(0.2)
 
 
 asyncio.run(main())
