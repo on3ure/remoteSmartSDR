@@ -78,7 +78,7 @@ export const Form = () => {
        {({ handleSubmit, isSubmitting, status }) => (
         <div className="form">
           <div className="form__grid">
-            <Card title="IP address">
+            <Card title="SmartSDR IP address">
               <InputField
                 id="smartSDRip"
                 name="smartSDRip"
@@ -87,7 +87,7 @@ export const Form = () => {
                 maxLength={15}
               />
             </Card>
-            <Card title="TCP port">
+            <Card title="SmartSDR TCP port">
               <InputField
                 id="smartSDRport"
                 name="smartSDRport"
@@ -106,7 +106,7 @@ export const Form = () => {
                 actualValues={PTTReleaseDelay.actualValues}
               />
             </Card>
-            <Card title="Offset">
+            <Card title="Frequency shift">
               <Slider
                 id="offset"
                 name="offset"

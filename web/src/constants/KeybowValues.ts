@@ -4,8 +4,8 @@ const PTTReleaseDelay: { values: number[], actualValues: string[] } = {
 };
 
 const offset: { values: number[], actualValues: string[] } = {
-  values: [1, 5, 10, 15, 20, 25, 50, 100, 150, 200, 250, 500, 1000],
-  actualValues: ['1', '5', '10', '15', '20', '25', '50', '100', '150', '200', '250', '500', '1000'],
+  values: [100, 150, 200, 250, 500, 1000],
+  actualValues: ['100', '150', '200', '250', '500', '1000'],
 };
 
 export { PTTReleaseDelay, offset };

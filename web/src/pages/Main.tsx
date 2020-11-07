@@ -5,7 +5,7 @@ import { Form } from 'components/form/Form';
 export const Main = () => (
   <div className="main">
     <h1>
-      RemoteSmartSDR
+      remoteSmartSDR
     </h1>
 
     <Form />
