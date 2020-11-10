@@ -2,6 +2,7 @@ offset
 pttDelay
 smartSDRip
 smartSDRport
+cloudlogEnabled (True/False)
 cloudlogURL
 cloudlogAPIkey
 remoteShackEnabled (True/False)
