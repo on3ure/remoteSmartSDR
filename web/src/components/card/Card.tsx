@@ -16,6 +16,6 @@ export const Card: FC<CardProps> = ({ tooltip, title, children }) => (
 );
 
 interface CardProps {
-  tooltip: string;
+  tooltip?: string;
   title: string;
 }

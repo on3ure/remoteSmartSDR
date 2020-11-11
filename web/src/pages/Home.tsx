@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-import { Form } from 'components/form/Form';
+import { HomepageForm } from 'components/forms/HomepageForm';
 
-export const Home = () => (
+export const Home:FC = () => (
   <div className="home">
     <h1>
       remoteSmartSDR
     </h1>
 
-    <Form />
+    <HomepageForm />
   </div>
 );
