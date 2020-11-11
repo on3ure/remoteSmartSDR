@@ -1,0 +1,53 @@
+@keyframes translate {
+  from {
+    transform: translate3d(-6rem, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+
+  width: 8rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $c-blue;
+
+  box-shadow: 0 .5rem 2rem rgba($c-grey-300, .1);
+
+  animation: translate 850ms cubic-bezier(.4, .12, 0, 1) forwards;
+
+  ul {
+    li {
+      margin: .5rem 0;
+
+      a {
+        display: flex;
+        justify-content: center;
+        padding: 1.5rem 2rem;
+
+        svg {
+          opacity: 1;
+
+          @include transition(opacity);
+        }
+
+        &:hover,
+        &:focus {
+          svg {
+            opacity: .75;
+          }
+        }
+      }
+    }
+  }
+}
