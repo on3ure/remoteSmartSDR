@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Form } from 'components/form/Form';
 
-export const Main = () => (
-  <div className="main">
+export const Home = () => (
+  <div className="home">
     <h1>
       remoteSmartSDR
     </h1>
