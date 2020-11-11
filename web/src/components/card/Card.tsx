@@ -1,7 +1,13 @@
 import React, { FC } from 'react';
+import { Tooltip } from 'components/tooltip/Tooltip';
 
-export const Card: FC<CardProps> = ({ title, children }) => (
+export const Card: FC<CardProps> = ({ tooltip, title, children }) => (
   <div className="card">
+    {tooltip && (
+      <Tooltip
+        message={tooltip}
+      />
+    )}
     {title && (
       <h2 className="card__title">{title}</h2>
     )}
@@ -10,5 +16,6 @@ export const Card: FC<CardProps> = ({ title, children }) => (
 );
 
 interface CardProps {
+  tooltip: string;
   title: string;
 }

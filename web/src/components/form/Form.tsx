@@ -78,7 +78,7 @@ export const Form = () => {
        {({ handleSubmit, isSubmitting, status }) => (
         <div className="form">
           <div className="form__grid">
-            <Card title="SmartSDR IP address">
+            <Card title="SmartSDR IP address" tooltip="Lorem ipsum">
               <InputField
                 id="smartSDRip"
                 name="smartSDRip"
