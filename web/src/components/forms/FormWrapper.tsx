@@ -54,7 +54,7 @@ export const FormWrapper: FC<FormWrapperProps> = ({
        {({ handleSubmit, isSubmitting, status }) => (
         <div className="form">
           {children}
-          <button type="submit" onClick={() => handleSubmit()} disabled={isSubmitting}>
+          <button type="submit" className="btn" onClick={() => handleSubmit()} disabled={isSubmitting}>
             Submit
           </button>
           {status &&
