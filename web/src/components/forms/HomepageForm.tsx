@@ -6,6 +6,7 @@ import { FormWrapper } from 'components/forms/FormWrapper';
 import { HomepageValidateValues } from 'components/forms/interfaces/Interfaces';
 
 import { Card } from 'components/card/Card';
+import { Frequency } from 'components/frequency/Frequency';
 import { Slider } from './fields/Slider';
 import { InputField } from './fields/InputField';
 
@@ -53,6 +54,14 @@ export const HomepageForm: FC = () => {
       submitData={onSubmit}
     >
       <div className="form__grid">
+        <Card
+          title="SmartSDR frequency"
+          tooltip="Lorem ipsum"
+        >
+            <Frequency 
+              hertz="200145785"
+            />
+        </Card>
         <Card title="SmartSDR IP address">
           <InputField
             id="smartSDRip"
