@@ -26,7 +26,7 @@ export const Frequency: FC<FrequencyProps> = () => {
     document.addEventListener("keydown", keyboardPress, false);
 
     return () => {
-      document.removeEventListener("keyup", keyboardPress, false);
+      document.removeEventListener("keydown", keyboardPress, false);
     };
   }, []);
 
