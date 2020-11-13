@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import React, { FC, useContext, useEffect, useCallback } from 'react';
 
 import NumberFormat from 'react-number-format';
 
@@ -9,11 +9,26 @@ export const Frequency: FC<FrequencyProps> = () => {
   const [hertzValue, setHertzValue] = hertz;
   const [hertzShiftValue, setHertzShiftValue] = hertzShift;
 
-  const handleChange = (action) => {
-    console.log(action);
-    console.log(hertz);
-    setHertzValue(action == 'add' ? parseInt(hertz) + parseInt(hertzShift): parseInt(hertz) - parseInt(hertzShift));
+  const handleFrequencyShiftChange = (action) => {
+    setHertzValue(action == 'add' ? parseInt(hertzValue) + parseInt(hertzShiftValue): parseInt(hertzValue) - parseInt(hertzShiftValue));
+    console.log(hertzValue + ' ' + hertzShiftValue)
   };
+
+  const keyboardPress = useCallback((event) => {
+    if(event.keyCode === 65) {
+      handleFrequencyShiftChange('add');
+    } else if (event.keyCode === 68) {
+      handleFrequencyShiftChange('sub');
+    }
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener("keydown", keyboardPress, false);
+
+    return () => {
+      document.removeEventListener("keyup", keyboardPress, false);
+    };
+  }, []);
 
   return (
     <div className="frequency">
@@ -25,8 +40,8 @@ export const Frequency: FC<FrequencyProps> = () => {
           decimalSeparator=","
         />
       </div>
-      <button className="btn" onClick={() => handleChange('sub')}>-</button>
-      <button className="btn" onClick={() => handleChange('add')}>+</button>
+      <button className="btn" onClick={() => handleFrequencyShiftChange('sub')}>-</button>
+      <button className="btn" onClick={() => handleFrequencyShiftChange('add')}>+</button>
     </div>
   );
 };

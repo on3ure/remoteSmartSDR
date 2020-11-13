@@ -56,11 +56,9 @@ export const HomepageForm: FC = () => {
       <div className="form__grid">
         <Card
           title="SmartSDR frequency"
-          tooltip="Lorem ipsum"
+          tooltip="Use A to add, D to subtract."
         >
-            <Frequency 
-              hertz="200145785"
-            />
+            <Frequency />
         </Card>
         <Card title="SmartSDR IP address">
           <InputField
