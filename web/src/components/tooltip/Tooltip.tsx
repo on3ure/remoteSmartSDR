@@ -23,17 +23,19 @@ export const Tooltip: FC<TooltipProps> = ({
       </Reference>
       <Popper
         placement="bottom-end"
-        modifiers={{
-          preventOverflow: {
-            enabled: true,
-            boundariesElement: 'window',
+        modifiers={[{
+          name: 'preventOverflow',
+          options: {
+            rootBoundary: 'document',
             padding: 20,
           },
-          offset: {
-            enabled: true,
-            offset: '6, 6, 6, 6',
+        },
+        {
+          name: 'offset',
+          options: {
+            offset: [5, 5],
           },
-        }}
+        }]}
       >
         {({
           ref, style, placement,
