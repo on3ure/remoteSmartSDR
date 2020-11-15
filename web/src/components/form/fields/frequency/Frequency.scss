@@ -22,23 +22,40 @@
     }
   }
 
-  &__btn {
-    width: 50%;
+  &__btns {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
 
-    padding: space("s") space("l");
+    margin-top: space("s");
+
+    @media (min-width: $sm) {
+      margin-top: space("m");
+    }
+  }
+
+  &__btn {
+    width: calc(50% - #{space("xxs")});
+
+    padding: .4rem space("m");
+
+    color: $c-blue;
+    font-size: 2.8rem;
+    line-height: 1;
 
     background-color: $c-white;
-
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: $c-blue;
-
-    border-radius: 2rem;
     border: 2px solid $c-blue;
+    border-radius: 2rem;
 
     cursor: pointer;
 
     @include transition(background-color, color);
+
+    &:first-child {
+      // Because "-" doesnt want to vertical align
+      padding-top: .2rem;
+      padding-bottom: .6rem;
+    }
 
     &:hover,
     &:focus {

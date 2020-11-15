@@ -49,16 +49,18 @@ export const Frequency: FC<FrequencyProps> = ({
               decimalSeparator=","
             />
           </div>
-          <button
-            type="button"
-            className="btn"
-            onClick={() => handleFrequencyShiftChange('sub')}
-          >-</button>
-          <button
-            type="button"
-            className="btn"
-            onClick={() => handleFrequencyShiftChange('add')}
-          >+</button>
+          <div className="frequency__btns">
+            <button
+              type="button"
+              className="frequency__btn"
+              onClick={() => handleFrequencyShiftChange('sub')}
+            >-</button>
+            <button
+              type="button"
+              className="frequency__btn"
+              onClick={() => handleFrequencyShiftChange('add')}
+            >+</button>
+          </div>
         </div>
       );
     }}
