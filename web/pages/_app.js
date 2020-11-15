@@ -1,7 +1,7 @@
 import '../src/global.scss';
 
-const MyApp = ({ Component, pageProps }) => (
+const RemoteSmartSDR = ({ Component, pageProps }) => (
   <Component {...pageProps} />
 );
 
-export default MyApp
+export default RemoteSmartSDR;
