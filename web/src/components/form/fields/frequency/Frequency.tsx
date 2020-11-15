@@ -25,19 +25,20 @@ export const Frequency: FC<FrequencyProps> = ({
         const keyboardPress = (event: KeyboardEvent): void => {
           const { key } = event;
     
-          if(key === '65') {
+          // keycode & which are deprecated
+          if (key === 'A' || key === 'a') {
             handleFrequencyShiftChange('add');
-          } else if (key === '68') {
+          } else if (key === 'D' || key === 'd') {
             handleFrequencyShiftChange('sub');
           }
         };
     
-        document.addEventListener('keydown', keyboardPress, false);
+        document.addEventListener('keydown', keyboardPress);
     
         return () => {
-          document.removeEventListener('keydown', keyboardPress, false);
+          document.removeEventListener('keydown', keyboardPress);
         };
-      }, []);
+      }, [frequency, frequencyShift]);
       
       return (
         <div className="frequency">
