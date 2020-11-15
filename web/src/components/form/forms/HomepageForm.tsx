@@ -1,14 +1,13 @@
 import React, { FC } from 'react';
 
-import { SmartSDRFormService } from './services/SmartSDRFormService';
-
-import { FormWrapper } from 'components/forms/FormWrapper';
-import { HomepageValidateValues } from 'components/forms/interfaces/Interfaces';
-import { Frequency } from 'components/forms/fields/frequency/Frequency';
-import { Slider } from 'components/forms/fields/slider/Slider';
-
 import { Card } from 'components/card/Card';
 
+import { FormWrapper } from 'components/form/FormWrapper';
+import { HomepageValidateValues } from 'components/form/interfaces/Interfaces';
+import { Frequency } from 'components/form/fields/frequency/Frequency';
+import { Slider } from 'components/form/fields/slider/Slider';
+
+import { SmartSDRFormService } from 'components/form/services/SmartSDRFormService';
 import { frequencyShift } from 'constants/KeybowValues';
 
 export const HomepageForm: FC = () => {

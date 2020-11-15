@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SettingsForm } from 'components/forms/SettingsForm';
+import { SettingsForm } from 'components/form/forms/SettingsForm';
 
 export const Settings = () => (
   <div className="settings">

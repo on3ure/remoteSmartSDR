@@ -1,16 +1,15 @@
 import React, { FC } from 'react';
 
-import { SmartSDRFormService } from './services/SmartSDRFormService';
-
-import { FormWrapper } from 'components/forms/FormWrapper';
-import { SettingsValidateValues } from 'components/forms/interfaces/Interfaces';
-import { Slider } from 'components/forms/fields/slider/Slider';
-import { InputField } from 'components/forms/fields/input/InputField';
-
 import { Card } from 'components/card/Card';
 
-import { PTTReleaseDelay } from 'constants/KeybowValues';
+import { FormWrapper } from 'components/form/FormWrapper';
+import { SettingsValidateValues } from 'components/form/interfaces/Interfaces';
+import { Slider } from 'components/form/fields/slider/Slider';
+import { InputField } from 'components/form/fields/input/InputField';
 
+import { SmartSDRFormService } from 'components/form/services/SmartSDRFormService';
+
+import { PTTReleaseDelay } from 'constants/KeybowValues';
 import { validateIPAddress, validatePort } from 'helpers/validations';
 
 export const SettingsForm: FC = () => {

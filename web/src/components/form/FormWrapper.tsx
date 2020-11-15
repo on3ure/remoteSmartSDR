@@ -4,7 +4,7 @@ import { Formik } from 'formik';
 import { Loader } from 'components/loader/Loader';
 import { Toast } from 'components/toast/Toast';
 
-import { HomepageFormValues, HomepageValidateValues } from 'components/forms/interfaces/Interfaces';
+import { HomepageFormValues, HomepageValidateValues } from 'components/form/interfaces/Interfaces';
 
 export const FormWrapper: FC<FormWrapperProps> = ({
   children,

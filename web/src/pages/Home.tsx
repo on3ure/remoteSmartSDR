@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { HomepageForm } from 'components/forms/HomepageForm';
+import { HomepageForm } from 'components/form/forms/HomepageForm';
 
 export const Home:FC = () => (
   <div className="home">

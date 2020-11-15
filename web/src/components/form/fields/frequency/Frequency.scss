@@ -1,0 +1,50 @@
+.frequency {
+  &__display {
+    position: relative;
+
+    font-family: "digital-7";
+    font-size: 8rem;
+    color: $c-blue;
+
+    user-select: none;
+
+    &::after {
+      content: "000.000.000";
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+
+      font-family: "digital-7";
+      font-size: 8rem;
+      color: $c-grey-100;
+    }
+  }
+
+  &__btn {
+    width: 50%;
+
+    padding: space("s") space("l");
+
+    background-color: $c-white;
+
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: $c-blue;
+
+    border-radius: 2rem;
+    border: 2px solid $c-blue;
+
+    cursor: pointer;
+
+    @include transition(background-color, color);
+
+    &:hover,
+    &:focus {
+      background-color: $c-blue;
+
+      color: $c-white;
+    }
+  }
+}
