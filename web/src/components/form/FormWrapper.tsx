@@ -4,7 +4,12 @@ import { Formik } from 'formik';
 import { Loader } from 'components/loader/Loader';
 import { Toast } from 'components/toast/Toast';
 
-import { HomepageFormValues, HomepageValidateValues } from 'components/form/interfaces/Interfaces';
+import {
+  HomepageFormValues,
+  HomepageValidateValues,
+  SettingsFormValues,
+  SettingsValidateValues,
+} from 'components/form/interfaces/Interfaces';
 
 export const FormWrapper: FC<FormWrapperProps> = ({
   children,
@@ -12,7 +17,7 @@ export const FormWrapper: FC<FormWrapperProps> = ({
   validateData,
   submitData,
 }) => {
-  const [initialValues, setInitialValues] = useState<HomepageFormValues | undefined>(undefined);
+  const [initialValues, setInitialValues] = useState<HomepageFormValues | SettingsFormValues | undefined>(undefined);
 
   useEffect(() => {
     const fetchInitialData = async (): Promise<void> => {
@@ -70,6 +75,6 @@ export const FormWrapper: FC<FormWrapperProps> = ({
 
 interface FormWrapperProps {
   initialValues(): Promise<HomepageFormValues | undefined>;
-  validateData(values: HomepageFormValues[]): HomepageValidateValues | undefined;
+  validateData(values: HomepageFormValues[]): HomepageValidateValues | SettingsValidateValues | undefined;
   submitData(values: HomepageFormValues[]): Promise<boolean>;
 }
