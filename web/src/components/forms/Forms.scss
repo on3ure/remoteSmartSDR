@@ -13,5 +13,6 @@
   }
 }
 
-@import "./fields/InputField";
-@import "./fields/Slider";
+@import "./fields/input/InputField";
+@import "./fields/slider/Slider";
+@import "./fields/frequency/Frequency";

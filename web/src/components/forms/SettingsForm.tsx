@@ -4,10 +4,10 @@ import { SmartSDRFormService } from './services/SmartSDRFormService';
 
 import { FormWrapper } from 'components/forms/FormWrapper';
 import { SettingsValidateValues } from 'components/forms/interfaces/Interfaces';
+import { Slider } from 'components/forms/fields/slider/Slider';
+import { InputField } from 'components/forms/fields/input/InputField';
 
 import { Card } from 'components/card/Card';
-import { Slider } from './fields/Slider';
-import { InputField } from './fields/InputField';
 
 import { PTTReleaseDelay } from 'constants/KeybowValues';
 

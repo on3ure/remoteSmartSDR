@@ -4,10 +4,10 @@ import { SmartSDRFormService } from './services/SmartSDRFormService';
 
 import { FormWrapper } from 'components/forms/FormWrapper';
 import { HomepageValidateValues } from 'components/forms/interfaces/Interfaces';
+import { Frequency } from 'components/forms/fields/frequency/Frequency';
+import { Slider } from 'components/forms/fields/slider/Slider';
 
 import { Card } from 'components/card/Card';
-import { Frequency } from 'components/frequency/Frequency';
-import { Slider } from './fields/Slider';
 
 import { frequencyShift } from 'constants/KeybowValues';
 
