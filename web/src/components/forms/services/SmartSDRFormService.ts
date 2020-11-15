@@ -4,8 +4,8 @@ export class SmartSDRFormService {
 
     // Hard coded return
     return {
-      frequencyShift: null,
-      frequency: 0,
+      frequency: 100500200,
+      frequencyShift: 250,
     };
   };
 

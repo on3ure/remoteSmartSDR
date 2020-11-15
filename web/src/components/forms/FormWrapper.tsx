@@ -15,7 +15,7 @@ export const FormWrapper: FC<FormWrapperProps> = ({
   const [initialValues, setInitialValues] = useState<HomepageFormValues | undefined>(undefined);
 
   useEffect(() => {
-    const fetchInitialData = async () => {
+    const fetchInitialData = async (): Promise<void> => {
       const data = await fetchInitialValues();
       
       if (data) {

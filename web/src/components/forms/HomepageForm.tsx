@@ -39,7 +39,7 @@ export const HomepageForm: FC = () => {
           title="SmartSDR frequency"
           tooltip="Use A to add, D to subtract."
         >
-            <Frequency />
+          <Frequency name="frequency" />
         </Card>
         <Card title="Frequency shift">
           <Slider
