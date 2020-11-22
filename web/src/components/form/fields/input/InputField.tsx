@@ -25,6 +25,7 @@ export const InputField: FC<InputFieldProps> = ({
             {...field}
             id={id}
             placeholder={placeholder}
+            type="text"
             maxLength={maxLength}
             className="input-field__input"
           />
