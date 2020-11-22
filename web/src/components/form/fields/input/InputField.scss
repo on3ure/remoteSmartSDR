@@ -54,3 +54,7 @@
     animation: errorAppear 300ms cubic-bezier(.8, .1, 0, 1) forwards;
   }
 }
+
+.input-field + .input-field {
+  margin-top: space("s");
+}

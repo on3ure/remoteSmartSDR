@@ -11,7 +11,9 @@ export const Card: FC<CardProps> = ({ tooltip, title, children }) => (
     {title && (
       <h2 className="card__title">{title}</h2>
     )}
-    {children}
+    <div className="card__content">
+      {children}
+    </div>
   </div>
 );
 

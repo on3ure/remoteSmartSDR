@@ -18,24 +18,23 @@
   padding: 3.5rem space("l");
 
   background-color: $c-white;
-
   border-radius: 2rem;
-
   box-shadow: 0 .5rem 2rem rgba($c-grey-300, .1);
+  opacity: 0;
+
+  animation: fadeInTranslate 850ms cubic-bezier(.4, .12, 0, 1) forwards;
 
   &__title {
     display: block;
-
-    margin-bottom: space("m");
 
     font-size: 2.8rem;
     font-weight: 700;
     color: $c-grey-300;
   }
 
-  opacity: 0;
-
-  animation: fadeInTranslate 850ms cubic-bezier(.4, .12, 0, 1) forwards;
+  &__content {
+    margin-top: space("m");
+  }
 }
 
 @for $i from 1 to 5 {

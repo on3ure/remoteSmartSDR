@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
-import NumberFormat from 'react-number-format';
 import { Field } from 'formik';
+import NumberFormat from 'react-number-format';
 
 export const Frequency: FC<FrequencyProps> = ({
   name,

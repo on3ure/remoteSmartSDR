@@ -1,11 +1,13 @@
 import React, { FC } from 'react';
 
-import { Card } from 'components/card/Card';
-
 import { FormWrapper } from 'components/form/FormWrapper';
-import { SettingsValidateValues } from 'components/form/interfaces/Interfaces';
+import { Card } from 'components/card/Card';
+import { ToggleCard } from 'components/card/ToggleCard';
+
 import { Slider } from 'components/form/fields/slider/Slider';
 import { InputField } from 'components/form/fields/input/InputField';
+
+import { SettingsValidateValues } from 'components/form/interfaces/Interfaces';
 
 import { SmartSDRFormService } from 'components/form/services/SmartSDRFormService';
 
@@ -80,6 +82,48 @@ export const SettingsForm: FC = () => {
             actualValues={PTTReleaseDelay.actualValues}
           />
         </Card>
+        <ToggleCard
+          title="Cloudlog API"
+          id="cloudlogApiEnabled"
+          name="cloudlogApiEnabled"
+          label="Enable Cloudlog API"
+        >
+          <InputField
+            id="cloudlogApiKey"
+            name="cloudlogApiKey"
+            label="Cloudlog API key"
+            placeholder="xxxx"
+            maxLength={15}
+          />
+          <InputField
+            id="cloudlogApiUrl"
+            name="cloudlogApiUrl"
+            label="Cloudlog API URL"
+            placeholder="https://xxxxxx"
+            maxLength={15}
+          />
+        </ToggleCard>
+        <ToggleCard
+          title="Remoteshack API"
+          id="remoteshackApiEnabled"
+          name="remoteshackApiEnabled"
+          label="Remoteshack API"
+        >
+          <InputField
+            id="remoteshackApiKey"
+            name="remoteshackApiKey"
+            label="Remoteshack API key"
+            placeholder="xxxx"
+            maxLength={15}
+          />
+          <InputField
+            id="remoteshackApiUrl"
+            name="remoteshackApiUrl"
+            label="Remoteshack API URL"
+            placeholder="https://xxxxxx"
+            maxLength={15}
+          />
+        </ToggleCard>
       </div>
     </FormWrapper>
   );
