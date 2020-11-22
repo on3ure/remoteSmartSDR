@@ -4,7 +4,7 @@
 
     font-family: "digital-7";
     font-size: 8rem;
-    color: $c-blue;
+    color: var(--theme-color);
 
     user-select: none;
 
@@ -39,12 +39,11 @@
 
     padding: .4rem space("m");
 
-    color: $c-blue;
     font-size: 2.8rem;
     line-height: 1;
 
     background-color: $c-white;
-    border: 2px solid $c-blue;
+    border: 2px solid var(--theme-color);
     border-radius: 2rem;
 
     cursor: pointer;
@@ -59,9 +58,8 @@
 
     &:hover,
     &:focus {
-      background-color: $c-blue;
-
-      color: $c-white;
+      background-color:var(--theme-color);
+      color: var(--theme-bg-color);
     }
   }
 }

@@ -1,22 +1,27 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import Head from 'next/head';
 
+import { useTheme } from 'hooks/useTheme';
 import { Nav } from 'components/nav/Nav';
 
-export const Layout:FC = ({ children }) => (
-  <>
-    <Head>
-      <title>remoteSmartSDR</title>
-      <link rel="icon" href="/favicon.png" />
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
-    </Head>
+export const Layout:FC = ({ children }) => {
+  useTheme();
 
-    <Nav />
+  return (
+    <>
+      <Head>
+        <title>remoteSmartSDR</title>
+        <link rel="icon" href="/favicon.png" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
+      </Head>
 
-    <main>
-      <div className="container">
-        {children}
-      </div>      
-    </main>
-  </>
-);
+      <Nav />
+
+      <main>
+        <div className="container">
+          {children}
+        </div>      
+      </main>
+    </>
+  );
+};

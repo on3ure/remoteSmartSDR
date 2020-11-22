@@ -18,7 +18,7 @@
   }
 }
 
-nav {
+.nav {
   position: fixed;
   top: 0;
   right: 0;
@@ -30,7 +30,8 @@ nav {
   justify-content: center;
   align-items: center;
 
-  background-color: $c-blue;
+  background-color: var(--theme-color);
+  color: var(--theme-contrast-color);
 
   box-shadow: 0 .5rem 2rem rgba($c-grey-300, .1);
 
@@ -50,15 +51,15 @@ nav {
 
   ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: row;
 
     width: 100%;
+    height: 100%;
 
     list-style: none;
 
     @media (min-width: $sm) {
-      justify-content: start;
       flex-direction: column;
     }
 
@@ -91,6 +92,25 @@ nav {
           }
         }
       }
+    }
+  }
+
+  &__toggle-theme {
+    display: flex;
+    justify-content: center;
+    
+    width: 100%;
+
+    margin-top: auto;
+    padding: space("m") space("xs");
+
+    border-top: 1px solid rgba($c-white, .3);
+
+    cursor: pointer;
+
+    > svg {
+      width: 2rem;
+      height: 2rem;
     }
   }
 }

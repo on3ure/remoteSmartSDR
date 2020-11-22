@@ -21,7 +21,8 @@ body {
   font-size: 1.8rem;
   font-weight: 400;
 
-  background-color: $c-white;
+  background-color: var(--theme-bg-color);
+  color: var(--theme-color);
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

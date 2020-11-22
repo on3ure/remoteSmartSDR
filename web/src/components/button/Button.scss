@@ -2,14 +2,13 @@
   margin-top: space("l");
   padding: space("s") space("l");
 
-  background-color: $c-white;
+  background-color: var(--theme-bg-color);
 
   font-size: 1.6rem;
   font-weight: 700;
-  color: $c-blue;
 
   border-radius: 2rem;
-  border: 2px solid $c-blue;
+  border: 2px solid var(--theme-color);
 
   cursor: pointer;
 
@@ -17,8 +16,7 @@
 
   &:hover,
   &:focus {
-    background-color: $c-blue;
-
-    color: $c-white;
+    background-color: var(--theme-color);
+    color: var(--theme-bg-color);
   }
 }
