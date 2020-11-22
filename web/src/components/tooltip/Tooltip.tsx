@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 
 import { Manager, Reference, Popper } from 'react-popper';
 
@@ -6,6 +6,20 @@ export const Tooltip: FC<TooltipProps> = ({
   message,
 }) => {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const onKeydown = (event: KeyboardEvent):void => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", onKeydown);
+
+    return () => {
+      window.removeEventListener("keydown", onKeydown);
+    };
+  }, []);
 
   return (
     <Manager>
