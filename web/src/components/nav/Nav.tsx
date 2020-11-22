@@ -1,10 +1,16 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 import Link from 'next/link';
 
-import { useTheme } from 'hooks/useTheme';
+import { AppContext } from 'contexts/AppContext';
+
+import { light, dark } from 'constants/ThemeColors';
 
 export const Nav: FC = () => {
-  const toggleTheme = useTheme();
+  const [appState, setAppState] = useContext(AppContext);
+
+  const onNavToggleClick = () => {
+    setAppState({ ...appState, theme: appState.theme === light ? dark : light });
+  };
   
   return (
     <nav className="nav">
@@ -28,7 +34,7 @@ export const Nav: FC = () => {
           </Link>
         </li>
         <li>
-          <button type="button" className="nav__toggle-theme" onClick={() => toggleTheme()}>
+          <button type="button" className="nav__toggle-theme" onClick={() => onNavToggleClick()}>
             <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
               <path d="M15.52 29.46A15 15 0 019.88.61l.61-.24.95.92-.23.63a13 13 0 0016.87 16.89l.6-.24.95.9-.22.67a14.88 14.88 0 01-13.89 9.32zm-6.87-26A13 13 0 006.7 24.08a13.13 13.13 0 0017.3.28 12.74 12.74 0 002.56-3A15 15 0 018.65 3.46z" fill="currentColor"/>
             </svg>

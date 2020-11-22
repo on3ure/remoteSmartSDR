@@ -1,12 +1,9 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import Head from 'next/head';
 
-import { useTheme } from 'hooks/useTheme';
 import { Nav } from 'components/nav/Nav';
 
 export const Layout:FC = ({ children }) => {
-  useTheme();
-
   return (
     <>
       <Head>

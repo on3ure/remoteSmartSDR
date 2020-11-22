@@ -36,6 +36,7 @@
   box-shadow: 0 .5rem 2rem rgba($c-grey-300, .1);
 
   animation: translateX 850ms cubic-bezier(.4, .12, 0, 1) forwards;
+  @include transition(background-color, color);
 
   @media (min-width: $sm) {
     position: fixed;
