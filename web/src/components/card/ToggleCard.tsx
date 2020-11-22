@@ -34,7 +34,7 @@ export const ToggleCard: FC<ToggleFieldProps> = ({
         )}
       </Field>
       {visible && (
-        <div className="card__content">
+        <div className="toggle-card__content">
           {children}
         </div>
       )}

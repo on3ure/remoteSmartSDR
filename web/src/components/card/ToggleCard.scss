@@ -16,4 +16,13 @@
     
     appearance: auto;
   }
+
+  &__content {
+    margin-top: space("m");
+
+    opacity: 0;
+
+    transform: translate3d(0, #{space("m")}, 0);
+    animation: fadeInTranslate $animation-speed--default $animation-transition--default forwards;
+  }
 }
