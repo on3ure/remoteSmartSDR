@@ -84,20 +84,20 @@ export const SettingsForm: FC = () => {
         </Card>
         <ToggleCard
           title="Cloudlog API"
-          id="cloudlogApiEnabled"
-          name="cloudlogApiEnabled"
+          id="cloudlogEnabled"
+          name="cloudlogEnabled"
           label="Enable Cloudlog API"
         >
           <InputField
-            id="cloudlogApiKey"
-            name="cloudlogApiKey"
+            id="cloudlogAPIkey"
+            name="cloudlogAPIkey"
             label="Cloudlog API key"
             placeholder="xxxx"
             maxLength={15}
           />
           <InputField
-            id="cloudlogApiUrl"
-            name="cloudlogApiUrl"
+            id="cloudlogURL"
+            name="cloudlogURL"
             label="Cloudlog API URL"
             placeholder="https://xxxxxx"
             maxLength={15}
@@ -105,20 +105,20 @@ export const SettingsForm: FC = () => {
         </ToggleCard>
         <ToggleCard
           title="Remoteshack API"
-          id="remoteshackApiEnabled"
-          name="remoteshackApiEnabled"
+          id="remoteShackEnabled"
+          name="remoteShackEnabled"
           label="Remoteshack API"
         >
           <InputField
-            id="remoteshackApiKey"
-            name="remoteshackApiKey"
+            id="remoteShackAPIkey"
+            name="remoteShackAPIkey"
             label="Remoteshack API key"
             placeholder="xxxx"
             maxLength={15}
           />
           <InputField
-            id="remoteshackApiUrl"
-            name="remoteshackApiUrl"
+            id="remoteShackURL"
+            name="remoteShackURL"
             label="Remoteshack API URL"
             placeholder="https://xxxxxx"
             maxLength={15}

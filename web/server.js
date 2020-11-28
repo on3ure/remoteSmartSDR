@@ -1,19 +1,12 @@
-// server.js
-const {
-    createServer
-} = require('http')
-const {
-    parse
-} = require('url')
-const next = require('next')
+const { createServer } = require('http');
+const { parse } = require('url');
+const next = require('next');
 const WebSocket = require('ws');
 const Redis = require("ioredis");
 
-const dev = process.env.NODE_ENV !== 'production'
-const app = next({
-    dev
-})
-const handle = app.getRequestHandler()
+const dev = process.env.NODE_ENV !== 'production';
+const app = next({ dev });
+const handle = app.getRequestHandler();
 
 const port = dev ? 3000 : 80;
 
@@ -42,38 +35,52 @@ app.prepare().then(() => {
 
 
 const redis = new Redis(process.env.REDIS_PORT, process.env.REDIS_HOST);
-// const pub = new Redis(process.env.REDIS_PORT, process.env.REDIS_HOST);
-
+const pub = new Redis(process.env.REDIS_PORT, process.env.REDIS_HOST);
 
 redis.subscribe("SmartSDRfrequency", "SmartSDRptt", () => {
     console.log('subscribing to SmartSDRfrequency and SmartSDRptt')
 });
+
 const wss = new WebSocket.Server({
     port: 8080
 });
 
-
 redis.on("message", (channel, message) => {
-    console.log(channel, message)
     const data = JSON.stringify(
-        {
-            channel,
-            message
-        }
+        [
+            {
+                channel,
+                message
+            },
+        ]
     );
     wss.clients.forEach((client) => {
         client.send(data);
     });
 });
 
-
 wss.on('connection', (ws) => {
     ws.on('message', (message) => {
-        // pub.publish("news", "Hello world!");
-        console.log('received: %s', message);
+        const data = JSON.parse(message);
+        pub.publish(data.channel, data.message);
+        pub.set(data.channel, data.message);
     });
+    
+    // Send the default values.
+    const frequency = await pub.get('SmartSDRfrequency');
+    const ptt = await pub.get('SmartSDRptt');
 
-    ws.send('something');
+    const data = JSON.stringify([
+        {
+            channel: 'SmartSDRfrequency',
+            message: frequency
+        },
+        {
+            channel: 'SmartSDRptt',
+            message: ptt,
+        },
+    ]);
+    ws.send(data);
 });
 
 console.log('> WebSocker ready on http://localhost:8080')

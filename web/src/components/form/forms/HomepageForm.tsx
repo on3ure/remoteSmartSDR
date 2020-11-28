@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 
 import { Card } from 'components/card/Card';
 
@@ -26,6 +26,26 @@ export const HomepageForm: FC = () => {
   const onSubmit = async (values) => {
     return await SmartSDRFormService.postHomepageData(values);
   };
+
+
+  useEffect(() => {
+    const ws = new WebSocket('ws://' + location.host + ':8080');
+    ws.onmessage = evt => {
+      const data = JSON.parse(evt.data);
+      data.foreach((item) => {
+        const {channel, message } = item; 
+              // Channel is the field name and message is the value ex. SmartSDRfrequency: 0
+              // @ridders The values need to be changed in the form.
+      });
+    }
+  
+    ws.onclose = () => {
+      console.log('disconnected')
+    }
+
+    // // @ridders, this code needs to be executed on change.
+    // ws.send(JSON.stringify({channel: 'SmartSDRptt', message: 200}));
+  }, [])
 
   return (
     <FormWrapper

@@ -1,6 +1,6 @@
 import Redis from 'ioredis';
 
-const redis = new Redis(process.env.REDIS_PORT, process.env.REDIS_HOST); 
+const redis = new Redis(process.env.REDIS_PORT, process.env.REDIS_HOST);
 
 export default async (req, res) => {
   const {
@@ -12,27 +12,32 @@ export default async (req, res) => {
     smartSDRip: '',
     smartSDRport: '',
     pttDelay: '5',
-    offset: '250',
+    cloudlogEnabled: false,
+    cloudlogURL: '',
+    cloudlogAPIkey: '',
+    remoteShackEnabled: false,
+    remoteShackURL: '',
+    remoteShackAPIkey: '',
   };
-  
+
   switch (method) {
     case 'GET':
-      const keys =  Object.keys(data);
+      const keys = Object.keys(data);
       const pipe = keys.map(key => ['get', key]);
 
       await redis
-      .pipeline(pipe)
-      .exec()
-      .then((result) => {
-        result.forEach((item, key) => {
-          if (item[0] || !item[1]) {
-            console.error(item[0]);
-            return;
-          }
+        .pipeline(pipe)
+        .exec()
+        .then((result) => {
+          result.forEach((item, key) => {
+            if (item[0] || !item[1]) {
+              console.error(item[0]);
+              return;
+            }
 
-          data[keys[key]] = item[1];
+            data[keys[key]] = item[1];
+          });
         });
-      });
       res.status(200).json(data);
       break
     case 'PUT':
