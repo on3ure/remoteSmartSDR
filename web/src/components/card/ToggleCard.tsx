@@ -12,7 +12,8 @@ export const ToggleCard: FC<ToggleFieldProps> = ({
 
   useEffect(() => {
     const toggleName = formikValues[name];
-    setVisible(toggleName);
+    const isVisible = toggleName.toString() === 'true';
+    setVisible(isVisible);
   }, [formikValues[name]]);
 
   return (
@@ -28,6 +29,7 @@ export const ToggleCard: FC<ToggleFieldProps> = ({
               id={id}
               type="checkbox"
               className="toggle-card__checkbox"
+              checked={visible}
             />
             {title}
           </label>
