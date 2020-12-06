@@ -59,12 +59,12 @@ export const FormWrapper: FC<FormWrapperProps> = ({
     >
       {({ setFieldValue, handleSubmit, isSubmitting, status }) => {
         useEffect(() => {
-          if (!live) return;
+          //if (!live) return;
 
           const ws = new WebSocket('ws://' + location.host + ':8080');
           ws.onmessage = evt => {
             const data = JSON.parse(evt.data);
-            data.foreach((item) => {
+            data.forEach((item) => {
               const { channel, message } = item; 
                 // Channel is the field name and message is the value ex. SmartSDRfrequency: 0
                 // @ridders The values need to be changed in the form.

@@ -67,8 +67,8 @@ wss.on('connection', (ws) => {
     });
     
     // Send the default values.
-    const frequency = await pub.get('SmartSDRfrequency');
-    const ptt = await pub.get('SmartSDRptt');
+    const frequency = pub.get('SmartSDRfrequency');
+    const ptt = pub.get('SmartSDRptt');
 
     const data = JSON.stringify([
         {
