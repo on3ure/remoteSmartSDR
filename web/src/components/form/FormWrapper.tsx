@@ -59,16 +59,16 @@ export const FormWrapper: FC<FormWrapperProps> = ({
     >
       {({ setFieldValue, handleSubmit, isSubmitting, status }) => {
         useEffect(() => {
-          //if (!live) return;
+          if (!live) return;
 
           const ws = new WebSocket('ws://' + location.host + ':8080');
+
           ws.onmessage = evt => {
             const data = JSON.parse(evt.data);
+
             data.forEach((item) => {
               const { channel, message } = item; 
-                // Channel is the field name and message is the value ex. SmartSDRfrequency: 0
-                // @ridders The values need to be changed in the form.
-                setFieldValue(channel, message);
+              setFieldValue(channel, message);
             });
           }
 
@@ -76,6 +76,7 @@ export const FormWrapper: FC<FormWrapperProps> = ({
             console.log('disconnected')
           }
 
+          
           // // @ridders, this code needs to be executed on change.
           // ws.send(JSON.stringify({channel: 'SmartSDRptt', message: 200}));
         }, [live]);
@@ -83,9 +84,11 @@ export const FormWrapper: FC<FormWrapperProps> = ({
         return (
           <div className="form">
             {children}
-            <button type="submit" className="btn" onClick={() => handleSubmit()} disabled={isSubmitting}>
-              Submit
-            </button>
+            {!live &&
+              <button type="submit" className="btn" onClick={() => handleSubmit()} disabled={isSubmitting}>
+                Submit
+              </button>
+            }   
             {status &&
               <Toast
                 message={status}
