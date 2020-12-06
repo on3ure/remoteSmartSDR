@@ -25,6 +25,8 @@ const AppProvider = ({ children }) => {
       document.documentElement.style.setProperty('--theme-color', state.theme.color);
       document.documentElement.style.setProperty('--theme-bg-color', state.theme.bgColor);
       document.documentElement.style.setProperty('--theme-contrast-color', state.theme.contrastColor);
+      document.documentElement.style.setProperty('--theme-title-color', state.theme.titleColor);
+      document.documentElement.style.setProperty('--theme-grey-color', state.theme.greyColor);
 
       localStorage.setItem("theme", state.theme === light ? "light" : "dark");
     }
