@@ -4,7 +4,7 @@ export interface HomepageFormValues {
 }
 
 export interface HomepageValidateValues {
-  frequency: number,
+  frequency?: number,
   frequencyShift?: number,
 }
 

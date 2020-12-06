@@ -11,8 +11,8 @@ export const Slider: FC<SliderProps> = ({
   actualValues,
 }) => (
   <div className="slider">
-    <Field
-      render={({ form, field }) => {
+    <Field>
+      {({ form, field }) => {
         let actualValuesIndex: number = 0;
         const valueFromFormData: number = field.value[name];
 
@@ -48,7 +48,7 @@ export const Slider: FC<SliderProps> = ({
           </>
         );
       }}
-    />
+   </Field>
   </div>
 );
 

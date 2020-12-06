@@ -5,8 +5,8 @@ import NumberFormat from 'react-number-format';
 export const Frequency: FC<FrequencyProps> = ({
   name,
 }) => (
-  <Field
-    render={({ form }) => {
+  <Field>
+    {({ form }) => {
       const { frequency, frequencyShift } = form.values;
 
       const handleFrequencyShiftChange = (action: string): void => {
@@ -65,7 +65,7 @@ export const Frequency: FC<FrequencyProps> = ({
         </div>
       );
     }}
-  />
+  </Field>
 );
 
 interface FrequencyProps {
