@@ -7,5 +7,5 @@
 
 h1 {
   margin: space("l") 0;
-  color: $c-grey-300;
+  color: var(--theme-title-color);
 }
