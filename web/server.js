@@ -62,8 +62,10 @@ redis.on("message", (channel, message) => {
 wss.on('connection', (ws) => {
     ws.on('message', (message) => {
         const data = JSON.parse(message);
-        pub.publish(data.channel, data.message);
-        pub.set(data.channel, data.message);
+        data.forEach((item) => {
+            pub.publish(item.channel, item.message);
+            pub.set(item.channel, item.message);
+        });
     });
     
     // Send the default values.
