@@ -11,6 +11,7 @@ import { Slider } from 'components/form/fields/slider/Slider';
 import { useHomepageWebSocket } from 'components/form/hooks/useWebSocket';
 
 import { frequencyShift } from 'constants/KeybowValues';
+import { ToggleCard } from 'components/card/ToggleCard';
 
 export const HomepageForm: FC = () => {
   const [homepageWsValues, submitHomepageWsValues] = useHomepageWebSocket();
@@ -49,6 +50,15 @@ export const HomepageForm: FC = () => {
                   actualValues={frequencyShift.actualValues}
                 />
               </Card>
+              <ToggleCard
+                title="SmartSDR PTT"
+                id="SmartSDRptt"
+                name="SmartSDRptt"
+                label="Enable SmartSDR PTT"
+                tooltip="Push to talk tooltip"
+              >
+                <div className="push-to-talk"></div>
+              </ToggleCard>
             </div>
             {status &&
               <Toast
