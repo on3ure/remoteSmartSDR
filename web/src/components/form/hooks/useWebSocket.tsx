@@ -5,8 +5,11 @@ export const useHomepageWebSocket = () => {
 
     useEffect(() => {
       const ws = new WebSocket('ws://' + location.host + ':8080');
+      console.log('init ws', ws);
       ws.onmessage = evt => {
         const data = JSON.parse(evt.data);
+
+        console.log('on messaga', data);
 
         setHomepageWsValues(data);
       };
