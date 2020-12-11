@@ -1,23 +1,45 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+
+import { HomepageFormValues } from 'components/form/interfaces/Interfaces';
 
 export const useHomepageWebSocket = () => {
-    const [homepageWsValues, setHomepageWsValues] = useState<any[]>([]);
+    const ws = useRef(null);
+    const [homepageWsValues, setHomepageWsValues] = useState<HomepageFormValues>({});
 
     useEffect(() => {
-      const ws = new WebSocket('ws://' + location.host + ':8080');
-      console.log('init ws', ws);
-      ws.onmessage = evt => {
-        const data = JSON.parse(evt.data);
+      ws.current = new WebSocket('ws://' + location.host + ':8080');
+    }, [ws]);
 
-        console.log('on messaga', data);
+    useEffect(() => {
+      if (ws.current) {
+        ws.current.onmessage = evt => {
+          const data = JSON.parse(evt.data);
+          let dataObject = {};
 
-        setHomepageWsValues(data);
-      };
-    }, []);
+          console.log('initial socket values', data);
+
+          data.forEach(({ channel, message }) => {
+            dataObject[channel] = message;
+          });
+
+          setHomepageWsValues(dataObject);
+        };
+      }
+    }, [ws]);
 
     const submitHomepageWsValues = (values) => {
-      const ws = new WebSocket('ws://' + location.host + ':8080');
-      ws.send(JSON.stringify(values));
+      const channels = Object.keys(values);
+      const finalValues = channels.map((channel) => ({
+        message: values[channel],
+        channel: channel,
+      }));
+
+      console.log('values', values);
+      console.log('posting web socket', finalValues);
+
+      if (ws.current) {
+        ws.current.send(JSON.stringify(finalValues));
+      }
     };
 
     return [homepageWsValues, submitHomepageWsValues];
