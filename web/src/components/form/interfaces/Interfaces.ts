@@ -1,10 +1,12 @@
 export interface HomepageFormValues {
-  frequency: number,
+  SmartSDRfrequence: number,
+  SmartSDRptt: number,
   frequencyShift: number,
 }
 
 export interface HomepageValidateValues {
-  frequency?: number,
+  SmartSDRfrequence?: number,
+  SmartSDRptt?: number,
   frequencyShift?: number,
 }
 
