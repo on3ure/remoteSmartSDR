@@ -29,7 +29,7 @@
       width: 2.4rem;
       height: 2.4rem;
       border-radius: 50%; 
-      background-color: $c-white;
+      background-color: var(--theme-contrast-color);
       border: .2rem solid var(--theme-color);
       cursor: pointer;
     }
@@ -38,7 +38,7 @@
       width: 2.4rem;
       height: 2.4rem;
       border-radius: 50%;
-      background-color: $c-white;
+      background-color: var(--theme-contrast-color);
       border: .2rem solid $c-blue;
       cursor: pointer;
     }
