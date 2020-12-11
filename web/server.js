@@ -59,19 +59,20 @@ redis.on("message", (channel, message) => {
     });
 });
 
-wss.on('connection', (ws) => {
+wss.on('connection', async (ws) => {
     ws.on('message', (message) => {
         const data = JSON.parse(message);
+        console.log(data)
         data.forEach((item) => {
             pub.publish(item.channel, item.message);
             pub.set(item.channel, item.message);
         });
     });
-    
+
     // Send the default values.
-    const frequency = pub.get('SmartSDRfrequency');
-    const frequencyShift = pub.get('SmartSDRfrequencyShift');
-    const ptt = pub.get('SmartSDRptt');
+    const frequency = await pub.get('SmartSDRfrequency');
+    const frequencyShift = await pub.get('SmartSDRfrequencyShift');
+    const ptt = await pub.get('SmartSDRptt');
 
     const data = JSON.stringify([
         {
