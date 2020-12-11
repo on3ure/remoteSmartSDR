@@ -7,24 +7,24 @@ export const Frequency: FC<FrequencyProps> = ({
 }) => (
   <Field>
     {({ form }) => {
-      const { frequency, frequencyShift } = form.values;
+      const { SmartSDRfrequency, frequencyShift } = form.values;
 
       const handleFrequencyShiftChange = (action: string): void => {
         switch (action) {
           case 'add':
-            form.setFieldValue(name, parseInt(frequency) + parseInt(frequencyShift));
+            form.setFieldValue(name, parseInt(SmartSDRfrequency) + parseInt(frequencyShift));
             break;
           case 'sub':
-            form.setFieldValue(name, parseInt(frequency) - parseInt(frequencyShift));
+            form.setFieldValue(name, parseInt(SmartSDRfrequency) - parseInt(frequencyShift));
             break;
           default:
         }
       };
-    
+
       useEffect(() => {
         const keyboardPress = (event: KeyboardEvent): void => {
           const { key } = event;
-    
+
           // keycode & which are deprecated
           if (key === 'A' || key === 'a') {
             handleFrequencyShiftChange('add');
@@ -32,19 +32,19 @@ export const Frequency: FC<FrequencyProps> = ({
             handleFrequencyShiftChange('sub');
           }
         };
-    
+
         document.addEventListener('keydown', keyboardPress);
-    
+
         return () => {
           document.removeEventListener('keydown', keyboardPress);
         };
-      }, [frequency, frequencyShift]);
-      
+      }, [SmartSDRfrequency, frequencyShift]);
+
       return (
         <div className="frequency">
           <div className="frequency__display">
             <NumberFormat
-              value={frequency}
+              value={SmartSDRfrequency}
               displayType={'text'}
               thousandSeparator="."
               decimalSeparator=","

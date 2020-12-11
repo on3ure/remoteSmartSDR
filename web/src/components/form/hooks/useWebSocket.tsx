@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 export const useHomepageWebSocket = () => {
-    const [homepageWsValues, setHomepageWsValues] = useState<any[]>();
+    const [homepageWsValues, setHomepageWsValues] = useState<any[]>([]);
 
     useEffect(() => {
       const ws = new WebSocket('ws://' + location.host + ':8080');
