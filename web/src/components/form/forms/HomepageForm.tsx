@@ -12,12 +12,10 @@ import { useHomepageWebSocket } from 'components/form/hooks/useWebSocket';
 
 import { frequencyShift } from 'constants/KeybowValues';
 
-import { HomepageFormValues } from 'components/form/interfaces/Interfaces';
-
 export const HomepageForm: FC = () => {
   const [homepageWsValues, submitHomepageWsValues] = useHomepageWebSocket();
 
-  if (!homepageWsValues) {
+  if (!homepageWsValues?.SmartSDRfrequencyShift) {
     return (
       <Loader />
     );
@@ -37,12 +35,12 @@ export const HomepageForm: FC = () => {
               title="SmartSDR frequency"
               tooltip="Use A to add, D to subtract."
             >
-              <Frequency name="frequency" />
+              <Frequency name="SmartSDRfrequency" />
             </Card>
             <Card title="Frequency shift">
               <Slider
-                id="frequencyShift"
-                name="frequencyShift"
+                id="SmartSDRfrequencyShift"
+                name="SmartSDRfrequencyShift"
                 label="Push-to-Talk frequency shift"
                 max={frequencyShift.actualValues.length - 1}
                 values={frequencyShift.values}

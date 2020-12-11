@@ -16,8 +16,6 @@ export const useHomepageWebSocket = () => {
           const data = JSON.parse(evt.data);
           let dataObject = {};
 
-          console.log('initial socket values', data);
-
           data.forEach(({ channel, message }) => {
             dataObject[channel] = message;
           });
@@ -25,7 +23,7 @@ export const useHomepageWebSocket = () => {
           setHomepageWsValues(dataObject);
         };
       }
-    }, [ws]);
+    }, [ws.current]);
 
     const submitHomepageWsValues = (values) => {
       const channels = Object.keys(values);

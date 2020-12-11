@@ -26,7 +26,7 @@ export const Slider: FC<SliderProps> = ({
           const { value }: { value: string } = event.target;
           form.setFieldValue(name, actualValues[parseInt(value, 10)]);
         };
-        
+
         return (
           <>
             <div className="slider__value">
