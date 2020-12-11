@@ -11,6 +11,8 @@ import {
   SettingsValidateValues,
 } from 'components/form/interfaces/Interfaces';
 
+import { useHomepageWebSocket } from 'components/form/hooks/useWebSocket';
+
 export const FormWrapper: FC<FormWrapperProps> = ({
   children,
   initialValues: fetchInitialValues,
@@ -20,17 +22,25 @@ export const FormWrapper: FC<FormWrapperProps> = ({
 }) => {
   const [initialValues, setInitialValues] = useState<HomepageFormValues | SettingsFormValues | undefined>(undefined);
 
-  useEffect(() => {
-    const fetchInitialData = async (): Promise<void> => {
-      const data = await fetchInitialValues();
-      
-      if (data) {
-        setInitialValues(data);
-      }
-    }
+  const [homepageWsValues, submitHomepageWsValues] = useHomepageWebSocket();
 
-    fetchInitialData();
-  }, []);
+  useEffect(() => {
+    if (fetchInitialValues) {
+      const fetchInitialData = async (): Promise<void> => {
+        const data = await fetchInitialValues();
+
+        if (data) {
+          setInitialValues(data);
+        }
+      }
+
+      fetchInitialData();
+    }
+  }, [fetchInitialValues]);
+
+  const onBlur = (values) => {
+    console.log('values on lbur', values);
+  };
 
   if (!initialValues) {
     return (
@@ -42,6 +52,7 @@ export const FormWrapper: FC<FormWrapperProps> = ({
     <Formik
       initialValues={initialValues}
       validate={validateData}
+      handleBlur={onBlur}
       onSubmit={(values, { setSubmitting, setStatus }) => {
         const postData = async (values) => {
           const response = await submitData(values);
@@ -59,27 +70,14 @@ export const FormWrapper: FC<FormWrapperProps> = ({
     >
       {({ setFieldValue, handleSubmit, isSubmitting, status }) => {
         useEffect(() => {
-          if (!live) return;
+          if (!live || homepageWsValues.length === 0) return;
 
-          const ws = new WebSocket('ws://' + location.host + ':8080');
+          homepageWsValues.forEach((item) => {
+            const { channel, message } = item;
+            setFieldValue(channel, message);
+          });
 
-          ws.onmessage = evt => {
-            const data = JSON.parse(evt.data);
-
-            data.forEach((item) => {
-              const { channel, message } = item; 
-              setFieldValue(channel, message);
-            });
-          }
-
-          ws.onclose = () => {
-            console.log('disconnected')
-          }
-
-          
-          // // @ridders, this code needs to be executed on change.
-          // ws.send(JSON.stringify({channel: 'SmartSDRptt', message: 200}));
-        }, [live]);
+        }, [live, homepageWsValues]);
 
         return (
           <div className="form">
@@ -88,7 +86,7 @@ export const FormWrapper: FC<FormWrapperProps> = ({
               <button type="submit" className="btn" onClick={() => handleSubmit()} disabled={isSubmitting}>
                 Submit
               </button>
-            }   
+            }
             {status &&
               <Toast
                 message={status}
@@ -102,8 +100,8 @@ export const FormWrapper: FC<FormWrapperProps> = ({
 };
 
 interface FormWrapperProps {
-  initialValues(): Promise<HomepageFormValues | undefined>;
-  validateData(values: HomepageFormValues[]): HomepageValidateValues | SettingsValidateValues | undefined;
-  submitData(values: HomepageFormValues[]): Promise<boolean>;
+  initialValues?(): Promise<HomepageFormValues | undefined>;
+  validateData?(values: HomepageFormValues[]): HomepageValidateValues | SettingsValidateValues | undefined;
+  submitData?(values: HomepageFormValues[]): Promise<boolean>;
   live?: boolean;
 }

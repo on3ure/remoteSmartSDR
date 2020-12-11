@@ -1,15 +1,7 @@
-export class SmartSDRFormService {
-  static getHomepageInitialValues = async (): Promise<any> => {
-    // @TODO opdorp, provide /api/ call for initial homepage settings (frequencyShift + frequency)
+import { SettingsFormValues } from 'components/form/interfaces/Interfaces';
 
-    // Hard coded return
-    return {
-      frequency: 100500200,
-      frequencyShift: 250,
-    };
-  };
-
-  static getSettingsInitialValues = async (): Promise<any> => {
+export class SettingsFormService {
+  static getSettingsInitialValues = async (): Promise<SettingsFormValues> => {
     const response = await fetch('/api/hello', {
       method: 'GET',
       credentials: 'same-origin',
@@ -22,15 +14,7 @@ export class SmartSDRFormService {
       return response.json();
     }
 
-    return false;
-  };
-
-  static postHomepageData = async (data): Promise<boolean> => {
-    // @TODO opdorp provide /api/ post call
-
-    console.log('posting data', JSON.stringify(data));
-
-    return true;
+    return null;
   };
 
   static postSettingsData = async (data): Promise<boolean> => {

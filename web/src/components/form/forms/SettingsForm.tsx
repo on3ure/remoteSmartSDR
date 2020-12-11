@@ -9,14 +9,14 @@ import { InputField } from 'components/form/fields/input/InputField';
 
 import { SettingsValidateValues } from 'components/form/interfaces/Interfaces';
 
-import { SmartSDRFormService } from 'components/form/services/SmartSDRFormService';
+import { SettingsFormService } from 'components/form/services/SettingsFormService';
 
 import { PTTReleaseDelay } from 'constants/KeybowValues';
 import { validateIPAddress, validatePort } from 'helpers/validations';
 
 export const SettingsForm: FC = () => {
   const getInitialValues = async () => {
-    return await SmartSDRFormService.getSettingsInitialValues();
+    return await SettingsFormService.getSettingsInitialValues();
   };
 
   const onValidate = (values) => {
@@ -26,7 +26,7 @@ export const SettingsForm: FC = () => {
       if (values.smartSDRip === '') {
         errors.smartSDRip = 'This field is required.';
       }
-      
+
       if (values.smartSDRport === '') {
         errors.smartSDRport = 'This field is required.';
       }
@@ -44,7 +44,7 @@ export const SettingsForm: FC = () => {
   };
 
   const onSubmit = async (values) => {
-    return await SmartSDRFormService.postSettingsData(values);
+    return await SettingsFormService.postSettingsData(values);
   };
 
   return (
