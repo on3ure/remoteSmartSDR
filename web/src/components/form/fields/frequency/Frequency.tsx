@@ -49,6 +49,7 @@ export const Frequency: FC<FrequencyProps> = ({
               thousandSeparator="."
               decimalSeparator=","
             />
+            <p>000.000.000</p>
           </div>
           <div className="frequency__btns">
             <button
