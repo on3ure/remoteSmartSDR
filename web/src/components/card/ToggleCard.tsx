@@ -12,9 +12,9 @@ export const ToggleCard: FC<ToggleFieldProps> = ({
   const { values: formikValues }: { values: any } = useFormikContext();
 
   useEffect(() => {
-    const toggleName = formikValues[name];
+    const toggleValue = formikValues[name];
 
-    const isVisible = toggleName.toString() === 'true';
+    const isVisible = toggleValue.toString() === 'true';
     setVisible(isVisible);
   }, [formikValues[name]]);
 
