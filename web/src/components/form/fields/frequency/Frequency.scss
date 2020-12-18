@@ -3,21 +3,24 @@
     position: relative;
 
     font-family: "digital-7";
-    font-size: 8rem;
+    font-size: 7rem;
 
     user-select: none;
 
-    &::after {
-      content: "000.000.000";
+    display: inline-flex;
 
+    span {
       position: absolute;
       top: 0;
-      left: 0;
-      z-index: -1;
+      right: 0;
+    }
 
+    p {
       font-family: "digital-7";
-      font-size: 8rem;
+      font-size: 7rem;
       color: var(--theme-grey-color);
+
+      margin: 0;
     }
   }
 
