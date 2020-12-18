@@ -11,6 +11,7 @@ export default async (req, res) => {
   const data = {
     smartSDRip: '',
     smartSDRport: '',
+    pttDelay: '',
     cloudlogEnabled: false,
     cloudlogURL: '',
     cloudlogAPIkey: '',
