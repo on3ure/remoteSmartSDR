@@ -7,15 +7,15 @@ export const Frequency: FC<FrequencyProps> = ({
 }) => (
   <Field>
     {({ form }) => {
-      const { SmartSDRfrequency, frequencyShift } = form.values;
+      const { SmartSDRfrequency, SmartSDRfrequencyShift } = form.values;
 
       const handleFrequencyShiftChange = (action: string): void => {
         switch (action) {
           case 'add':
-            form.setFieldValue(name, parseInt(SmartSDRfrequency) + parseInt(frequencyShift));
+            form.setFieldValue(name, parseInt(SmartSDRfrequency) + parseInt(SmartSDRfrequencyShift));
             break;
           case 'sub':
-            form.setFieldValue(name, parseInt(SmartSDRfrequency) - parseInt(frequencyShift));
+            form.setFieldValue(name, parseInt(SmartSDRfrequency) - parseInt(SmartSDRfrequencyShift));
             break;
           default:
         }
@@ -38,7 +38,7 @@ export const Frequency: FC<FrequencyProps> = ({
         return () => {
           document.removeEventListener('keydown', keyboardPress);
         };
-      }, [SmartSDRfrequency, frequencyShift]);
+      }, [SmartSDRfrequency, SmartSDRfrequencyShift]);
 
       return (
         <div className="frequency">

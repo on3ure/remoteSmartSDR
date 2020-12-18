@@ -13,13 +13,17 @@ import { useHomepageWebSocket } from 'components/form/hooks/useWebSocket';
 import { frequencyShift } from 'constants/KeybowValues';
 
 export const HomepageForm: FC = () => {
-  const [homepageWsValues, submitHomepageWsValues] = useHomepageWebSocket();
+  const [homepageWsValues, submitHomepageWsValues, loading] = useHomepageWebSocket();
 
-  if (!homepageWsValues?.SmartSDRfrequencyShift) {
+  if (loading) {
     return (
       <Loader />
     );
   }
+
+  const onFormSubmit = () => {
+    // do nothing
+  };
 
   return (
     <Formik
@@ -27,6 +31,7 @@ export const HomepageForm: FC = () => {
       validate={(values) => {
         submitHomepageWsValues(values);
       }}
+      onSubmit={onFormSubmit}
     >
       {({ status }) => (
         <div className="form">
@@ -39,7 +44,6 @@ export const HomepageForm: FC = () => {
             </Card>
             <Card title="Frequency shift">
               <Slider
-                id="SmartSDRfrequencyShift"
                 name="SmartSDRfrequencyShift"
                 label="Push-to-Talk frequency shift"
                 max={frequencyShift.actualValues.length - 1}

@@ -37,7 +37,7 @@ app.prepare().then(() => {
 const redis = new Redis(process.env.REDIS_PORT, process.env.REDIS_HOST);
 const pub = new Redis(process.env.REDIS_PORT, process.env.REDIS_HOST);
 
-redis.subscribe("SmartSDRfrequency", "SmartSDRptt", () => {
+redis.subscribe("SmartSDRfrequency", "SmartSDRfrequencyShift", "SmartSDRptt", () => {
     console.log('subscribing to SmartSDRfrequency and SmartSDRptt')
 });
 

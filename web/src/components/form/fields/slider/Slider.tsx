@@ -3,7 +3,6 @@ import React, { FC } from 'react';
 import { Field } from 'formik';
 
 export const Slider: FC<SliderProps> = ({
-  id,
   name,
   label,
   max,
@@ -24,7 +23,7 @@ export const Slider: FC<SliderProps> = ({
           event.preventDefault();
 
           const { value }: { value: string } = event.target;
-          form.setFieldValue(name, actualValues[parseInt(value, 10)]);
+          form.setFieldValue(name, actualValues[value]);
         };
 
         return (
@@ -36,7 +35,6 @@ export const Slider: FC<SliderProps> = ({
               {label}
             </label>
             <input
-              id={id}
               name={name}
               type="range"
               min="0"
@@ -53,7 +51,6 @@ export const Slider: FC<SliderProps> = ({
 );
 
 interface SliderProps {
-  id: string;
   name: string;
   label: string;
   max: number;
