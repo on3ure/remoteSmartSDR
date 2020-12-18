@@ -62,7 +62,6 @@ redis.on("message", (channel, message) => {
 wss.on('connection', async (ws) => {
     ws.on('message', (message) => {
         const data = JSON.parse(message);
-        console.log(data)
         data.forEach((item) => {
             pub.publish(item.channel, item.message);
             pub.set(item.channel, item.message);
@@ -77,15 +76,15 @@ wss.on('connection', async (ws) => {
     const data = JSON.stringify([
         {
             channel: 'SmartSDRfrequency',
-            message: frequency
+            message: frequency || 145450000,
         },
         {
             channel: 'SmartSDRfrequencyShift',
-            message: frequencyShift,
+            message: frequencyShift || 250,
         },
         {
             channel: 'SmartSDRptt',
-            message: ptt,
+            message: ptt || false,
         },
     ]);
     ws.send(data);
