@@ -7,6 +7,7 @@ import { Loader } from 'components/loader/Loader';
 import { ToggleCard } from 'components/card/ToggleCard';
 import { Frequency } from 'components/form/fields/frequency/Frequency';
 import { Slider } from 'components/form/fields/slider/Slider';
+import { PushToTalk } from 'components/form/fields/push-to-talk/PushToTalk';
 
 import { useHomepageWebSocket } from 'components/form/hooks/useWebSocket';
 
@@ -55,9 +56,9 @@ export const HomepageForm: FC = () => {
               title="SmartSDR PTT"
               name="SmartSDRptt"
               label="Enable SmartSDR PTT"
-              tooltip="Push to talk tooltip"
+              tooltip="Use T to toggle PTT."
             >
-              <div className="push-to-talk"></div>
+              <PushToTalk name="push-to-talk" />
             </ToggleCard>
           </div>
           {status &&
