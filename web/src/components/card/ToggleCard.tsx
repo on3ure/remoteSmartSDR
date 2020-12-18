@@ -5,7 +5,6 @@ import { Tooltip } from 'components/tooltip/Tooltip';
 export const ToggleCard: FC<ToggleFieldProps> = ({
   title,
   tooltip,
-  id,
   name,
   children,
 }) => {
@@ -27,15 +26,12 @@ export const ToggleCard: FC<ToggleFieldProps> = ({
           message={tooltip}
         />
       )}
-      <Field
-        id={id}
-        name={name}
-      >
+      <Field name={name}>
         {({ field }) => (
           <label className="toggle-card__label">
             <input
               {...field}
-              id={id}
+              id={name}
               type="checkbox"
               className="toggle-card__checkbox"
               checked={visible}

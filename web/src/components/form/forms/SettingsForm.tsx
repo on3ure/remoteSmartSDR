@@ -85,7 +85,6 @@ export const SettingsForm: FC = () => {
             <div className="form__grid">
               <Card title="SmartSDR IP address">
                 <InputField
-                  id="smartSDRip"
                   name="smartSDRip"
                   label="IP address"
                   placeholder="xxx.xxx.x.x"
@@ -94,7 +93,6 @@ export const SettingsForm: FC = () => {
               </Card>
               <Card title="SmartSDR TCP port">
                 <InputField
-                  id="smartSDRport"
                   name="smartSDRport"
                   label="TCP port"
                   placeholder="xxxx"
@@ -103,7 +101,6 @@ export const SettingsForm: FC = () => {
               </Card>
               <Card title="PTT release delay">
                 <Slider
-                  id="pttDelay"
                   name="pttDelay"
                   label="Push-to-Talk release delay"
                   max={PTTReleaseDelay.actualValues.length - 1}
@@ -113,19 +110,16 @@ export const SettingsForm: FC = () => {
               </Card>
               <ToggleCard
                 title="Cloudlog API"
-                id="cloudlogEnabled"
                 name="cloudlogEnabled"
                 label="Enable Cloudlog API"
               >
                 <InputField
-                  id="cloudlogAPIkey"
                   name="cloudlogAPIkey"
                   label="Cloudlog API key"
                   placeholder="xxxx"
                   maxLength={15}
                 />
                 <InputField
-                  id="cloudlogURL"
                   name="cloudlogURL"
                   label="Cloudlog API URL"
                   placeholder="https://xxxxxx"
@@ -134,19 +128,16 @@ export const SettingsForm: FC = () => {
               </ToggleCard>
               <ToggleCard
                 title="Remoteshack API"
-                id="remoteShackEnabled"
                 name="remoteShackEnabled"
                 label="Remoteshack API"
               >
                 <InputField
-                  id="remoteShackAPIkey"
                   name="remoteShackAPIkey"
                   label="Remoteshack API key"
                   placeholder="xxxx"
                   maxLength={15}
                 />
                 <InputField
-                  id="remoteShackURL"
                   name="remoteShackURL"
                   label="Remoteshack API URL"
                   placeholder="https://xxxxxx"

@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import { Field } from 'formik';
 
 export const InputField: FC<InputFieldProps> = ({
-  id,
   name,
   label,
   placeholder,
@@ -12,10 +11,7 @@ export const InputField: FC<InputFieldProps> = ({
     <label htmlFor={name} className="input-field__label">
       {label}
     </label>
-    <Field
-      id={id}
-      name={name}
-    >
+    <Field name={name}>
       {({
         field,
         meta: { touched, error },
@@ -23,7 +19,7 @@ export const InputField: FC<InputFieldProps> = ({
         <div>
           <input
             {...field}
-            id={id}
+            id={name}
             placeholder={placeholder}
             type="text"
             maxLength={maxLength}
@@ -39,7 +35,6 @@ export const InputField: FC<InputFieldProps> = ({
 );
 
 interface InputFieldProps {
-  id: string;
   name: string;
   label: string;
   placeholder: string;

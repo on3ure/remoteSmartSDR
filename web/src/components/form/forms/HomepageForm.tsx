@@ -53,7 +53,6 @@ export const HomepageForm: FC = () => {
             </Card>
             <ToggleCard
               title="SmartSDR PTT"
-              id="SmartSDRptt"
               name="SmartSDRptt"
               label="Enable SmartSDR PTT"
               tooltip="Push to talk tooltip"
