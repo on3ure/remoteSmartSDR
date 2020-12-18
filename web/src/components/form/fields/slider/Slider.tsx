@@ -35,6 +35,7 @@ export const Slider: FC<SliderProps> = ({
               {label}
             </label>
             <input
+              id={name}
               name={name}
               type="range"
               min="0"

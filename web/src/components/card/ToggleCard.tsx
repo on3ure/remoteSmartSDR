@@ -51,7 +51,6 @@ export const ToggleCard: FC<ToggleFieldProps> = ({
 interface ToggleFieldProps {
   title: string;
   tooltip?: string;
-  id: string;
   name: string;
   label: string;
 }
