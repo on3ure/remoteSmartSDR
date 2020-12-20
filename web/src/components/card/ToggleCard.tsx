@@ -1,9 +1,10 @@
 import React, { FC, useState, useEffect } from 'react';
 import { Field, useFormikContext } from 'formik';
+import { Tooltip } from 'components/tooltip/Tooltip';
 
 export const ToggleCard: FC<ToggleFieldProps> = ({
   title,
-  id,
+  tooltip,
   name,
   children,
 }) => {
@@ -11,23 +12,28 @@ export const ToggleCard: FC<ToggleFieldProps> = ({
   const { values: formikValues }: { values: any } = useFormikContext();
 
   useEffect(() => {
-    const toggleName = formikValues[name];
-    setVisible(toggleName);
+    const toggleValue = formikValues[name];
+
+    const isVisible = toggleValue.toString() === 'true';
+    setVisible(isVisible);
   }, [formikValues[name]]);
 
   return (
     <div className="card toggle-card">
-      <Field
-        id={id}
-        name={name}
-      >
+      {tooltip && (
+        <Tooltip
+          message={tooltip}
+        />
+      )}
+      <Field name={name}>
         {({ field }) => (
           <label className="toggle-card__label">
             <input
               {...field}
-              id={id}
+              id={name}
               type="checkbox"
               className="toggle-card__checkbox"
+              checked={visible}
             />
             {title}
           </label>
@@ -44,7 +50,7 @@ export const ToggleCard: FC<ToggleFieldProps> = ({
 
 interface ToggleFieldProps {
   title: string;
-  id: string;
+  tooltip?: string;
   name: string;
   label: string;
 }

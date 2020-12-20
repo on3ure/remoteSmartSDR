@@ -6,8 +6,8 @@
     grid-template: 1fr / 1fr;
     grid-gap: space("m");
 
-    @media (min-width: $sm) {
-      grid-template: 1fr / 1fr 1fr;
+    @media (min-width: $md) {
+      grid-template: 1fr / 50% 50%;
       grid-gap: space("l");
     }
   }
@@ -16,3 +16,4 @@
 @import "./fields/input/InputField";
 @import "./fields/slider/Slider";
 @import "./fields/frequency/Frequency";
+@import "./fields/push-to-talk/PushToTalk";

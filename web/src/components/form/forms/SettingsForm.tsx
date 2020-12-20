@@ -1,23 +1,34 @@
-import React, { FC } from 'react';
+import React, { FC, useState, useEffect } from 'react';
+import { Formik } from 'formik';
 
-import { FormWrapper } from 'components/form/FormWrapper';
+import { Loader } from 'components/loader/Loader';
+import { Toast } from 'components/toast/Toast';
 import { Card } from 'components/card/Card';
 import { ToggleCard } from 'components/card/ToggleCard';
-
 import { Slider } from 'components/form/fields/slider/Slider';
 import { InputField } from 'components/form/fields/input/InputField';
 
-import { SettingsValidateValues } from 'components/form/interfaces/Interfaces';
+import { SettingsFormValues, SettingsValidateValues } from 'components/form/interfaces/Interfaces';
 
-import { SmartSDRFormService } from 'components/form/services/SmartSDRFormService';
+import { SettingsFormService } from 'components/form/services/SettingsFormService';
 
 import { PTTReleaseDelay } from 'constants/KeybowValues';
 import { validateIPAddress, validatePort } from 'helpers/validations';
 
 export const SettingsForm: FC = () => {
-  const getInitialValues = async () => {
-    return await SmartSDRFormService.getSettingsInitialValues();
-  };
+  const [initialValues, setInitialValues] = useState<SettingsFormValues | undefined>(undefined);
+
+  useEffect(() => {
+    const fetchInitialData = async (): Promise<void> => {
+      const data = await SettingsFormService.getSettingsInitialValues();
+
+      if (data) {
+        setInitialValues(data);
+      }
+    }
+
+    fetchInitialData();
+  }, []);
 
   const onValidate = (values) => {
     let errors:SettingsValidateValues = {};
@@ -26,7 +37,7 @@ export const SettingsForm: FC = () => {
       if (values.smartSDRip === '') {
         errors.smartSDRip = 'This field is required.';
       }
-      
+
       if (values.smartSDRport === '') {
         errors.smartSDRport = 'This field is required.';
       }
@@ -43,88 +54,108 @@ export const SettingsForm: FC = () => {
     return errors;
   };
 
-  const onSubmit = async (values) => {
-    return await SmartSDRFormService.postSettingsData(values);
-  };
+  if (!initialValues) {
+    return (
+      <Loader />
+    );
+  }
 
   return (
-    <FormWrapper
-      initialValues={getInitialValues}
-      validateData={onValidate}
-      submitData={onSubmit}
+    <Formik
+      initialValues={initialValues}
+      validate={onValidate}
+      onSubmit={(values, { setSubmitting, setStatus }) => {
+        const postData = async (values) => {
+          const response = await SettingsFormService.postSettingsData(values);
+
+          if (response && response === true) {
+            setSubmitting(false);
+
+            setStatus('');
+            setStatus('New values were successfully stored.');
+          }
+        };
+
+        postData(values);
+      }}
     >
-      <div className="form__grid">
-        <Card title="SmartSDR IP address">
-          <InputField
-            id="smartSDRip"
-            name="smartSDRip"
-            label="IP address"
-            placeholder="xxx.xxx.x.x"
-            maxLength={15}
-          />
-        </Card>
-        <Card title="SmartSDR TCP port">
-          <InputField
-            id="smartSDRport"
-            name="smartSDRport"
-            label="TCP port"
-            placeholder="xxxx"
-            maxLength={5}
-          />
-        </Card>
-        <Card title="PTT release delay">
-          <Slider
-            id="pttDelay"
-            name="pttDelay"
-            label="Push-to-Talk release delay"
-            max={PTTReleaseDelay.actualValues.length - 1}
-            values={PTTReleaseDelay.values}
-            actualValues={PTTReleaseDelay.actualValues}
-          />
-        </Card>
-        <ToggleCard
-          title="Cloudlog API"
-          id="cloudlogApiEnabled"
-          name="cloudlogApiEnabled"
-          label="Enable Cloudlog API"
-        >
-          <InputField
-            id="cloudlogApiKey"
-            name="cloudlogApiKey"
-            label="Cloudlog API key"
-            placeholder="xxxx"
-            maxLength={15}
-          />
-          <InputField
-            id="cloudlogApiUrl"
-            name="cloudlogApiUrl"
-            label="Cloudlog API URL"
-            placeholder="https://xxxxxx"
-            maxLength={15}
-          />
-        </ToggleCard>
-        <ToggleCard
-          title="Remoteshack API"
-          id="remoteshackApiEnabled"
-          name="remoteshackApiEnabled"
-          label="Remoteshack API"
-        >
-          <InputField
-            id="remoteshackApiKey"
-            name="remoteshackApiKey"
-            label="Remoteshack API key"
-            placeholder="xxxx"
-            maxLength={15}
-          />
-          <InputField
-            id="remoteshackApiUrl"
-            name="remoteshackApiUrl"
-            label="Remoteshack API URL"
-            placeholder="https://xxxxxx"
-            maxLength={15}
-          />
-        </ToggleCard>
-      </div>
-    </FormWrapper>
+      {({ handleSubmit, isSubmitting, status }) => {
+        return (
+          <div className="form">
+            <div className="form__grid">
+              <Card title="SmartSDR IP address">
+                <InputField
+                  name="smartSDRip"
+                  label="IP address"
+                  placeholder="xxx.xxx.x.x"
+                  maxLength={15}
+                />
+              </Card>
+              <Card title="SmartSDR TCP port">
+                <InputField
+                  name="smartSDRport"
+                  label="TCP port"
+                  placeholder="xxxx"
+                  maxLength={5}
+                />
+              </Card>
+              <Card title="PTT release delay">
+                <Slider
+                  name="pttDelay"
+                  label="Push-to-Talk release delay"
+                  max={PTTReleaseDelay.actualValues.length - 1}
+                  values={PTTReleaseDelay.values}
+                  actualValues={PTTReleaseDelay.actualValues}
+                />
+              </Card>
+              <ToggleCard
+                title="Cloudlog API"
+                name="cloudlogEnabled"
+                label="Enable Cloudlog API"
+              >
+                <InputField
+                  name="cloudlogAPIkey"
+                  label="Cloudlog API key"
+                  placeholder="xxxx"
+                  maxLength={15}
+                />
+                <InputField
+                  name="cloudlogURL"
+                  label="Cloudlog API URL"
+                  placeholder="https://xxxxxx"
+                  maxLength={15}
+                />
+              </ToggleCard>
+              <ToggleCard
+                title="Remoteshack API"
+                name="remoteShackEnabled"
+                label="Remoteshack API"
+              >
+                <InputField
+                  name="remoteShackAPIkey"
+                  label="Remoteshack API key"
+                  placeholder="xxxx"
+                  maxLength={15}
+                />
+                <InputField
+                  name="remoteShackURL"
+                  label="Remoteshack API URL"
+                  placeholder="https://xxxxxx"
+                  maxLength={15}
+                />
+              </ToggleCard>
+            </div>
+            <button type="submit" className="btn" onClick={() => handleSubmit()} disabled={isSubmitting}>
+              Submit
+            </button>
+            {status &&
+              <Toast
+                message={status}
+              />
+            }
+          </div>
+        );
+      }}
+    </Formik>
   );
 };

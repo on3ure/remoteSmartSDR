@@ -1,56 +1,73 @@
 import React, { FC } from 'react';
+import { Formik } from 'formik';
 
 import { Card } from 'components/card/Card';
-
-import { FormWrapper } from 'components/form/FormWrapper';
-import { HomepageValidateValues } from 'components/form/interfaces/Interfaces';
+import { Toast } from 'components/toast/Toast';
+import { Loader } from 'components/loader/Loader';
+import { ToggleCard } from 'components/card/ToggleCard';
 import { Frequency } from 'components/form/fields/frequency/Frequency';
 import { Slider } from 'components/form/fields/slider/Slider';
+import { PushToTalk } from 'components/form/fields/push-to-talk/PushToTalk';
 
-import { SmartSDRFormService } from 'components/form/services/SmartSDRFormService';
+import { useHomepageWebSocket } from 'components/form/hooks/useWebSocket';
+
 import { frequencyShift } from 'constants/KeybowValues';
 
 export const HomepageForm: FC = () => {
-  const getInitialValues = async () => {
-    return await SmartSDRFormService.getHomepageInitialValues();
-  };
+  const [homepageWsValues, submitHomepageWsValues, loading] = useHomepageWebSocket();
 
-  const onValidate = (values) => {
-    let errors:HomepageValidateValues = {};
+  if (loading) {
+    return (
+      <Loader />
+    );
+  }
 
-    console.log('values', values);
-
-    return errors;
-  };
-
-  const onSubmit = async (values) => {
-    return await SmartSDRFormService.postHomepageData(values);
+  const onFormSubmit = () => {
+    // do nothing
   };
 
   return (
-    <FormWrapper
-      initialValues={getInitialValues}
-      validateData={onValidate}
-      submitData={onSubmit}
+    <Formik
+      initialValues={homepageWsValues}
+      validate={(values) => {
+        submitHomepageWsValues(values);
+      }}
+      onSubmit={onFormSubmit}
     >
-      <div className="form__grid">
-        <Card
-          title="SmartSDR frequency"
-          tooltip="Use A to add, D to subtract."
-        >
-          <Frequency name="frequency" />
-        </Card>
-        <Card title="Frequency shift">
-          <Slider
-            id="frequencyShift"
-            name="frequencyShift"
-            label="Push-to-Talk frequency shift"
-            max={frequencyShift.actualValues.length - 1}
-            values={frequencyShift.values}
-            actualValues={frequencyShift.actualValues}
-          />
-        </Card>
-      </div>
-    </FormWrapper>
+      {({ status }) => (
+        <div className="form">
+          <div className="form__grid">
+            <Card
+              title="SmartSDR frequency"
+              tooltip="Use A to add, D to subtract."
+            >
+              <Frequency name="SmartSDRfrequency" />
+            </Card>
+            <Card title="Frequency shift">
+              <Slider
+                name="SmartSDRfrequencyShift"
+                label="Push-to-Talk frequency shift"
+                max={frequencyShift.actualValues.length - 1}
+                values={frequencyShift.values}
+                actualValues={frequencyShift.actualValues}
+              />
+            </Card>
+            <ToggleCard
+              title="SmartSDR PTT"
+              name="SmartSDRptt"
+              label="Enable SmartSDR PTT"
+              tooltip="Use T to toggle PTT."
+            >
+              <PushToTalk name="push-to-talk" />
+            </ToggleCard>
+          </div>
+          {status &&
+            <Toast
+              message={status}
+            />
+          }
+        </div>
+      )}
+    </Formik>
   );
 };
