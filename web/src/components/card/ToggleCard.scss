@@ -12,7 +12,7 @@
     height: 2rem;
 
     margin-right: space("xs");
-    
+
     appearance: auto !important;
   }
 
@@ -23,23 +23,5 @@
 
     transform: translate3d(0, #{space("m")}, 0);
     animation: fadeInTranslate $animation-speed--default $animation-transition--default forwards;
-  }
-
-  .push-to-talk {
-    width: 5rem;
-    height: 5rem;
-
-    background-color: $c-grey-300;
-
-    border: .2rem solid $c-white;
-    border-radius: 50%;
-
-    box-shadow: 0 0 2rem $c-grey-300;
-
-    &.is-active {
-      background-color: $c-red;
-  
-      box-shadow: 0 0 2rem $c-red;
-    }
   }
 }

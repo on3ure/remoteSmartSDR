@@ -45,9 +45,6 @@ export const useHomepageWebSocket = () => {
         channel: channel,
       }));
 
-      console.log('values', values);
-      console.log('posting web socket', finalValues);
-
       if (ws.current) {
         ws.current.send(JSON.stringify(finalValues));
       }

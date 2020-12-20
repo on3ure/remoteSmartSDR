@@ -1,0 +1,23 @@
+.push-to-talk {
+  width: 5rem;
+  height: 5rem;
+
+  background-color: $c-grey-300;
+
+  border: .2rem solid $c-white;
+  border-radius: 50%;
+
+  cursor: pointer;
+  box-shadow: 0 0 2rem $c-grey-300;
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 3rem $c-grey-300;
+  }
+
+  &.is-active {
+    background-color: $c-red;
+
+    box-shadow: 0 0 2rem $c-red;
+  }
+}

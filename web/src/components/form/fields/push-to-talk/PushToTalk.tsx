@@ -1,48 +1,52 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { Field } from 'formik';
 
-export const PushToTalk: FC<PushToTalkProps> = ({
-  name,
-}) => (
-  <Field>
-    {({ form }) => {
-      const { SmartSDRptt } = form.values;
+export const PushToTalk: FC<PushToTalkProps> = ({ name }) => {
+  const [fired, setFired] = useState(false);
 
-      const handlePTTChange = (action: string): void => {
-        switch (action) {
-          case 'talk':
-            // Should toggle, not only set
-            form.setFieldValue(name, true);
-            break;
-          default:
-        }
-      };
+  return (
+    <Field>
+      {({ form }) => {
+        const pttValue = form.values[name];
 
-      useEffect(() => {
-        const keyboardPress = (event: KeyboardEvent): void => {
-          const { key } = event;
+        useEffect(() => {
+          const onKeyDown = (event: KeyboardEvent): void => {
+            const { key } = event;
 
-          // keycode & which are deprecated
-          if (key === 'T' || key === 'T') {
-            handlePTTChange('talk');
-          }
-        };
+            if ((key === 't' || key === 'T') && !fired) {
+              form.setFieldValue(name, 'true');
+              setFired(true);
+            }
+          };
 
-        document.addEventListener('keydown', keyboardPress);
+          const onKeyUp = (event: KeyboardEvent): void => {
+            const { key } = event;
 
-        return () => {
-          document.removeEventListener('keydown', keyboardPress);
-        };
-      }, [SmartSDRptt]);
+            if (key === 't' || key === 'T') {
+              form.setFieldValue(name, 'false');
+            }
 
-      return (
-        <div className="push-to-talk">
-         
-        </div>
-      );
-    }}
-  </Field>
-);
+            setFired(false);
+          };
+
+          document.addEventListener('keydown', onKeyDown);
+          document.addEventListener('keyup', onKeyUp);
+
+          return () => {
+            document.removeEventListener('keydown', onKeyDown);
+            document.removeEventListener('keyup', onKeyUp);
+          };
+        }, [fired]);
+
+        return (
+          <div className={`push-to-talk${pttValue === 'true' ? ' is-active' : ''}`}>
+
+          </div>
+        );
+      }}
+    </Field>
+  );
+};
 
 interface PushToTalkProps {
   name: string;

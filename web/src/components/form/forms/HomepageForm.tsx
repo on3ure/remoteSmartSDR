@@ -52,14 +52,12 @@ export const HomepageForm: FC = () => {
                 actualValues={frequencyShift.actualValues}
               />
             </Card>
-            <ToggleCard
+            <Card
               title="SmartSDR PTT"
-              name="SmartSDRptt"
-              label="Enable SmartSDR PTT"
               tooltip="Use T to toggle PTT."
             >
-              <PushToTalk name="push-to-talk" />
-            </ToggleCard>
+              <PushToTalk name="pushToTalk" />
+            </Card>
           </div>
           {status &&
             <Toast
