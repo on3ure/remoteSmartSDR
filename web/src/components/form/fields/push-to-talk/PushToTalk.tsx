@@ -1,52 +1,33 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Field } from 'formik';
 
-export const PushToTalk: FC<PushToTalkProps> = ({ name }) => {
-  const [fired, setFired] = useState(false);
+export const PushToTalk: FC<PushToTalkProps> = ({ name }) => (
+  <Field>
+    {({ form }) => {
+      const pttValue = form.values[name];
 
-  return (
-    <Field>
-      {({ form }) => {
-        const pttValue = form.values[name];
+      useEffect(() => {
+        const onKeyDown = (event: KeyboardEvent): void => {
+          const { key } = event;
 
-        useEffect(() => {
-          const onKeyDown = (event: KeyboardEvent): void => {
-            const { key } = event;
+          if (key === 't' || key === 'T') {
+            form.setFieldValue(name, pttValue === 'true' ? 'false' : 'true');
+          }
+        };
 
-            if ((key === 't' || key === 'T') && !fired) {
-              form.setFieldValue(name, 'true');
-              setFired(true);
-            }
-          };
+        document.addEventListener('keydown', onKeyDown);
 
-          const onKeyUp = (event: KeyboardEvent): void => {
-            const { key } = event;
+        return () => {
+          document.removeEventListener('keydown', onKeyDown);
+        };
+      }, [pttValue]);
 
-            if (key === 't' || key === 'T') {
-              form.setFieldValue(name, 'false');
-            }
-
-            setFired(false);
-          };
-
-          document.addEventListener('keydown', onKeyDown);
-          document.addEventListener('keyup', onKeyUp);
-
-          return () => {
-            document.removeEventListener('keydown', onKeyDown);
-            document.removeEventListener('keyup', onKeyUp);
-          };
-        }, [fired]);
-
-        return (
-          <div className={`push-to-talk${pttValue === 'true' ? ' is-active' : ''}`}>
-
-          </div>
-        );
-      }}
-    </Field>
-  );
-};
+      return (
+        <div className={`push-to-talk${pttValue === 'true' ? ' is-active' : ''}`} />
+      );
+    }}
+  </Field>
+);
 
 interface PushToTalkProps {
   name: string;

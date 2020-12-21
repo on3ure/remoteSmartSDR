@@ -29,9 +29,7 @@ export const HomepageForm: FC = () => {
   return (
     <Formik
       initialValues={homepageWsValues}
-      validate={(values) => {
-        submitHomepageWsValues(values);
-      }}
+      validate={(values) => submitHomepageWsValues(values)}
       onSubmit={onFormSubmit}
     >
       {({ status }) => (
@@ -56,7 +54,7 @@ export const HomepageForm: FC = () => {
               title="SmartSDR PTT"
               tooltip="Use T to toggle PTT."
             >
-              <PushToTalk name="pushToTalk" />
+              <PushToTalk name="SmartSDRptt" />
             </Card>
           </div>
           {status &&
