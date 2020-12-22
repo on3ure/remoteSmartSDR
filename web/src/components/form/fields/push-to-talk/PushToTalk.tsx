@@ -6,6 +6,10 @@ export const PushToTalk: FC<PushToTalkProps> = ({ name }) => (
     {({ form }) => {
       const pttValue = form.values[name];
 
+      const handlePttChange = (): void => {
+        form.setFieldValue(name, pttValue === 'true' ? 'false' : 'true');
+      };
+
       useEffect(() => {
         const onKeyDown = (event: KeyboardEvent): void => {
           const { key } = event;
@@ -23,7 +27,10 @@ export const PushToTalk: FC<PushToTalkProps> = ({ name }) => (
       }, [pttValue]);
 
       return (
-        <div className={`push-to-talk${pttValue === 'true' ? ' is-active' : ''}`} />
+        <div
+          className={`push-to-talk${pttValue === 'true' ? ' is-active' : ''}`}
+          onClick={() => handlePttChange()}
+        />
       );
     }}
   </Field>

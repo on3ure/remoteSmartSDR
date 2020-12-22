@@ -38,7 +38,7 @@ const redis = new Redis(process.env.REDIS_PORT, process.env.REDIS_HOST);
 const pub = new Redis(process.env.REDIS_PORT, process.env.REDIS_HOST);
 
 redis.subscribe("SmartSDRfrequency", "SmartSDRfrequencyShift", "SmartSDRptt", () => {
-    console.log('subscribing to SmartSDRfrequency and SmartSDRptt')
+    console.log('subscribing to SmartSDRfrequency, SmartSDRfrequencyShift and SmartSDRptt')
 });
 
 const wss = new WebSocket.Server({
