@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 
 import { HomepageFormValues } from 'components/form/interfaces/Interfaces';
 
-export const useHomepageWebSocket = () => {
+export const useHomepageWebSocket = (): [HomepageFormValues, (HomepageFormValues) => void, boolean] => {
     const ws = useRef(null);
     const [homepageWsValues, setHomepageWsValues] = useState<HomepageFormValues>({
       SmartSDRfrequency: '0',
@@ -19,7 +19,7 @@ export const useHomepageWebSocket = () => {
       if (ws.current) {
         ws.current.onmessage = evt => {
           const data = JSON.parse(evt.data);
-          let dataObject: HomepageFormValues | {} = {};
+          let dataObject = {} as HomepageFormValues;
 
           data.forEach(({ channel, message }) => {
             dataObject[channel] = message;

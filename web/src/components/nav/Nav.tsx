@@ -1,17 +1,17 @@
 import React, { FC, useContext } from 'react';
 import Link from 'next/link';
 
-import { AppContext } from 'contexts/AppContext';
+import { AppContext, AppContextValue } from 'contexts/AppContext';
 
 import { light, dark } from 'constants/ThemeColors';
 
 export const Nav: FC = () => {
-  const [appState, setAppState] = useContext(AppContext);
+  const { state, setState } = useContext<AppContextValue>(AppContext);
 
   const onNavToggleClick = () => {
-    setAppState({ ...appState, theme: appState.theme === light ? dark : light });
+    setState({ ...state, theme: state.theme === light ? dark : light });
   };
-  
+
   return (
     <nav className="nav">
       <ul>

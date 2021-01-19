@@ -1,16 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 import { ITheme } from 'interfaces';
 import { light, dark } from 'constants/ThemeColors';
 
-const AppContext = React.createContext([{}, () => {}]);
+export type AppContextValue = {
+  state: { theme: ITheme };
+  setState: Dispatch<SetStateAction<{ theme: ITheme; }>>;
+};
+
+const AppContextDefaultValue = {
+  state: { theme: light },
+  setState: () => {},
+};
+
+const AppContext = React.createContext<AppContextValue>(AppContextDefaultValue);
 
 const AppProvider = ({ children }) => {
-  let initialTheme: ITheme = light;
-
-  const [state, setState] = useState({
-    theme: initialTheme,
-  });
+  const [state, setState] = useState(AppContextDefaultValue.state);
 
   useEffect(() => {
     const themeNameFromLocalStorage = localStorage.getItem("theme");
@@ -33,7 +39,7 @@ const AppProvider = ({ children }) => {
   }, [state.theme]);
 
   return (
-    <AppContext.Provider value={[state, setState]}>
+    <AppContext.Provider value={{ state, setState }}>
       {children}
     </AppContext.Provider>
   );
